@@ -1,0 +1,28 @@
+1------jvm_os_cpu
+2------数据结构 要背
+            ---红黑树  插入删除的4种情况 为什么能保持平衡?
+            ---avl平衡二叉树 B+ B*树
+            ---c语言
+
+
+   class Person{
+        List<Student>
+        age
+        int
+   }
+
+  {
+        Person p = new Person();
+        p.List().add(new Student());
+        return p.getList();
+  }
+
+
+  person * newPerson(){
+        person p ;
+        return &p;
+  }
+
+  void main(){
+        p.age;
+  }
