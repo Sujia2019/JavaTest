@@ -1,6 +1,8 @@
 package Algorithm.DataStruct;
 
 
+import java.util.ArrayList;
+
 public class MyList<T> {
 
 //    private final static int CAPACITY = 10;
@@ -9,6 +11,7 @@ public class MyList<T> {
     private int index=-1;
     private int size=0;
     private MyNode last;
+//    ArrayList
 
 
     static class MyNode<T>{

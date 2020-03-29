@@ -35,7 +35,7 @@
  2.Share：共享，多个线程可以同时执行，如Semaphore、CountDownLatch、ReadWriteLock，CyclicBarrier
  实现了AQS的锁有：自旋锁、互斥锁、读锁写锁、条件产量、信号量、栅栏都是AQS的衍生物
 
-  CAS（比较并交换）是CPU指令级的操作，只有一步原子操作，所以非常快
+  CAS（比较并交换）是CPU指令级的操作，只有一步原子操作，所以非常快,不可再分的操作。
   CAS算法，用CPU指令来实现无锁自增
 
   HashMap的优化   数组-链表-红黑树
