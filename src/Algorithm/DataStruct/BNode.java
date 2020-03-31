@@ -1,5 +1,6 @@
 package Algorithm.DataStruct;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class BNode {
@@ -7,6 +8,7 @@ public class BNode {
     private BNode rChild;
     private int value;
 
+//    HashMap
 
     public BNode(int value){
         this.value=value;
