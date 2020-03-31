@@ -1,6 +1,7 @@
 package Algorithm.leetcode;
 
 import java.io.*;
+import java.lang.reflect.Array;
 import java.util.*;
 
 /**
@@ -11,33 +12,6 @@ import java.util.*;
  *
  */
 public class ch0330 {
-    public static int[] QuickSort(int[] array,int start,int end){
-        if(array.length<1||start<0||end>=array.length||start>end) return null;
-        int smallIndex = partition(array,start,end);
-        if(smallIndex>start)
-            QuickSort(array,start,smallIndex-1);
-        if(smallIndex<end)
-            QuickSort(array,smallIndex+1,end);
-        return array;
-    }
-    public static int partition(int []array,int start,int end){
-        int pivot = 0;
-        int smallIndex=start-1;
-        swap(array,pivot,end);
-        for(int i=start;i<=end;i++){
-            if(array[i]<=array[end]){
-                smallIndex++;
-                if(i>smallIndex)
-                    swap(array,i,smallIndex);
-            }
-        }
-        return smallIndex;
-    }
-    public static void swap(int[] array,int i,int j){
-        int temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-    }
     public static List<List<Integer>> threeSum(int[] nums) {
         long st = System.currentTimeMillis();
         List<List<Integer>> res = new ArrayList<>();
@@ -66,41 +40,44 @@ public class ch0330 {
             }
         }
 
-//        nums = new int[list0.size()];
-//        for(int i=0;i<list0.size();i++){
-//            nums[i]=list0.get(i);
-//            System.out.print(nums[i]+",");
-//        }
+        nums = new int[list0.size()];
+        for(int i=0;i<list0.size();i++){
+            nums[i]=list0.get(i);
+        }
+        Arrays.sort(nums);
+
 //        nums=QuickSort(nums,0,nums.length-1);
 
-        Collections.sort(list0);
+
+//        Collections.sort(list0);
+//        list0.sort();
 
         Map<Integer,Integer> lastMap=new HashMap<>();
 
-        for (int i = 0; i < list0.size(); i++) {
-            lastMap.put(list0.get(i), i);
+        for (int i = 0; i < nums.length; i++) {
+            lastMap.put(nums[i], i);
         }
 
-        for (int i = 0; i < list0.size(); i++) {
-            if (i > 0 && list0.get(i).equals(list0.get(i - 1))) {
+        for (int i = 0; i < nums.length; i++) {
+            if (i > 0 && nums[i]==nums[i-1]) {
                 continue;
             }
 
-            for (int j = i + 1; j < list0.size(); j++) {
-                if (j > i + 1 && list0.get(j).equals(list0.get(j - 1))) {
+            for (int j = i + 1; j < nums.length; j++) {
+                if (j > i + 1 &&  nums[j]==nums[j-1]) {
                     continue;
                 }
 
-                int aAndB = list0.get(i) + list0.get(j);
+                int aAndB = nums[i]+nums[j];
                 int c = -aAndB;
-                if (c < list0.get(j)) {
+                if (c < nums[j]) {
                     break;
                 }
                 if (lastMap.containsKey(c) && lastMap.get(c) > j) {
 
                     List<Integer> temp = new ArrayList<Integer>();
-                    temp.add(list0.get(i));
-                    temp.add(list0.get(j));
+                    temp.add(nums[i]);
+                    temp.add(nums[j]);
                     temp.add(c);
                     res.add(temp);
 
@@ -109,7 +86,7 @@ public class ch0330 {
         }
 
         long ed = System.currentTimeMillis();
-//        System.out.println(ed-st);
+        System.out.println(ed-st);
         return res;
     }
 
