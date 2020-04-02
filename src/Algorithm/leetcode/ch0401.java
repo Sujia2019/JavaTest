@@ -1,6 +1,7 @@
 package Algorithm.leetcode;
 
 import org.omg.PortableInterceptor.INACTIVE;
+import sun.applet.resources.MsgAppletViewer_zh_TW;
 
 import java.util.*;
 
@@ -76,6 +77,53 @@ public class ch0401 {
             }
         }
         return maxArea;
+    }
+
+    private static void test(float[] f1 ,float max,float min,float average ){
+        max = f1[0];
+        average = f1[0];
+        min = f1[0];
+
+        for(int i=1;i<f1.length;i++){
+            if(f1[i]>max){
+                max = f1[i];
+            }
+            average+=f1[i];
+        }
+        for(int i=1;i<f1.length;i++){
+            if(f1[i]<min){
+                min=f1[i];
+            }
+        }
+        average=average/f1.length;
+    }
+
+    private static void test(float[] f1 ,float[] f2,float[] f3,float[] f4,float max,float min,float average ){
+        float max1 = f1[0];
+        float average1 = f1[0];
+        float min1 = f1[0];
+
+        float max2 = f2[0];
+        float average2 = f2[0];
+        float min2 = f2[0];
+
+        float max4 = f3[0];
+        float average4 = f3[0];
+        float min4 = f3[0];
+
+        float max3 = f4[0];
+        float average3 = f4[0];
+        float min3 = f4[0];
+
+        test(f1,max1,min1,average1);
+        test(f2,max2,min2,average2);
+        test(f3,max3,min3,average3);
+        test(f4,max4,min4,average4);
+
+        average = (average1+average2+average3+average4)/4;
+        max = Math.max(Math.max(max3,max4),Math.max(max1,max2));
+        min = Math.min(Math.min(min1,min2),Math.min(min1,min2));
+
     }
 
 
