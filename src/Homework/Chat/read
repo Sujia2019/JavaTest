@@ -1,0 +1,6 @@
+4、优化聊天程序，将相应加入聊天的nio socketChannel存入redis当中，
+使得当再有相关加入者时能够从redis当中获取对应用户的channel，并进行通信。
+并且使用连接池，操作mysql（mariaDB）将聊天记录保存到数据库，
+觉得Nio操作麻烦的同学，可以使用Netty搭建一个新体系。
+
+//见fc代码里的聊天模块

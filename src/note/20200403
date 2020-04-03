@@ -1,0 +1,3 @@
+1， HashMap 数组-链表-红黑树    16  8  64
+2， LinkedBlockingQueue   链式阻塞队列   原子量 ReentrantLock
+        这里面的 take和poll的区别   put和offer的区别，这其中锁发挥的作用   condition是干啥的= =
