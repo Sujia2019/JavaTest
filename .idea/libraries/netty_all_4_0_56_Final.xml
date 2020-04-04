@@ -4,6 +4,10 @@
       <root url="jar://$PROJECT_DIR$/../../netty-all-4.0.56.Final.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../../netty-4.0.56.Final" />
+      <root url="jar://$PROJECT_DIR$/../../netty-4.0.56.Final/jar/netty-buffer-4.0.56.Final-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../netty-4.0.56.Final/jar/all-in-one/netty-all-4.0.56.Final-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>
