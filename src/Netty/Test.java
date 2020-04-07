@@ -2,13 +2,13 @@ package Netty;
 
 //import com.sun.javafx.webkit.EventLoopImpl;
 
-//import io.netty.channel.EventLoopGroup;
-//import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.EventLoopGroup;
+import io.netty.channel.nio.NioEventLoopGroup;
 
 public class Test {
     public static void main(String[] args) {
 //        EventLoopGroup
-//        EventLoopGroup bossGroup = new NioEventLoopGroup();
+        EventLoopGroup bossGroup = new NioEventLoopGroup();
 //        EventLoopGroup workerGroup = new NioEventLoopGroup();
 //        try{
 //            ServerBootstrap b = new ServerBootstrap();
