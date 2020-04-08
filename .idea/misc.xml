@@ -5,6 +5,7 @@
       <list>
         <option value="$PROJECT_DIR$/mavenTest/pom.xml" />
         <option value="$PROJECT_DIR$/all/pom.xml" />
+        <option value="$PROJECT_DIR$/test/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

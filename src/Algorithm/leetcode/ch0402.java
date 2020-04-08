@@ -54,6 +54,10 @@ public class ch0402 {
         回溯法
      */
     public void solveSudoku(char[][] board) {
+        int x=0;
+        int y=0;
+
+//        while ()
 
     }
 
