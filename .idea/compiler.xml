@@ -13,7 +13,7 @@
     <bytecodeTargetLevel>
       <module name="all" target="1.5" />
       <module name="mavenTest" target="1.5" />
-      <module name="test" target="1.5" />
+      <module name="test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
