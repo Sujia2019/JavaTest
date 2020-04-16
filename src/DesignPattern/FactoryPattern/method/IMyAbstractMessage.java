@@ -1,18 +1,23 @@
 package DesignPattern.FactoryPattern.method;
 
+import DesignPattern.FactoryPattern.Message;
+
 import java.util.Map;
 
 public abstract class IMyAbstractMessage implements IMyMessage{
-    private Map<Integer,Object> messageParam;
+//    private Map<Integer,Object> messageParam;
+    protected Message msg;
 
-
+//    @Override
+//    public Map<Integer, Object> getMessageParam() {
+//        return messageParam;
+//    }
     @Override
-    public Map<Integer, Object> getMessageParam() {
-        return messageParam;
+    public Message getMessage() {
+        return msg;
     }
-
-    @Override
-    public void setMessageParam(Map<Integer, Object> messageParam) {
-        this.messageParam = messageParam;
-    }
+//    @Override
+//    public void setMessageParam(Map<Integer, Object> messageParam) {
+//        this.messageParam = messageParam;
+//    }
 }
