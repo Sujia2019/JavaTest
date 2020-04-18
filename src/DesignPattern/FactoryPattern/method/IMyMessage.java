@@ -14,4 +14,5 @@ public interface IMyMessage {
     public Message getMessage();
 
     public void sendMessage();
+
 }
