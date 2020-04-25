@@ -13,7 +13,8 @@ public class Main {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ComponentConfig.class);
         StudentService studentService = context.getBean(StudentService.class);
 //        studentService.regist("sujia","123456");
-        Student student =studentService.login("sujia","123456");
+//        studentService.regist("test","2222");
+        Student student = studentService.login("test","2222");
         System.out.println(student);
     }
 }
