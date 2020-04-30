@@ -41,6 +41,7 @@ public class DataConfig {
 
     @Bean
     public JdbcTemplate getJdbcTemplate(DataSource dataSource) {
+
         return new JdbcTemplate(dataSource);
     }
 
