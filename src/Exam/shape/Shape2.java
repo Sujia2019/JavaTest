@@ -15,11 +15,11 @@ public class Shape2 {
      */
     public static void main(String[] args) {
 
-        Point A = new Point(1,3);
-        Point B = new Point(1,1);
-        Point C = new Point(5,1);
-        Point D = new Point(5,3);
-        Point E = new Point(2,2);
+        Point A = new Point(2,4);
+        Point B = new Point(1,3);
+        Point C = new Point(3,7);
+        Point D = new Point(3,8);
+        Point E = new Point(1,1);
 
         compare(A,B,C,D,E);
     }
