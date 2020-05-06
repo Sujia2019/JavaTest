@@ -36,6 +36,13 @@ public class GroupService {
             mongoTemplate.upsert(query, update, GroupMsg.class);
         }
     }
+    //移出该成员
+    public void delMember(String groupId,String member){
+        Query query = Query.query(Criteria.where("groupId").is(groupId));
+        Update update = new Update();
+        update.pull("membersId",member);
+        mongoTemplate.updateFirst(query, update, GroupMsg.class);
+    }
 
     //创建管理员
     public void insertManager(String groupId,String memberId){
@@ -70,5 +77,7 @@ public class GroupService {
         Query query = new Query(Criteria.where("groupName").is(groupName));
         return mongoTemplate.findOne(query, GroupMsg.class);
     }
+
+
 
 }
