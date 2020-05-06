@@ -17,7 +17,8 @@ public class MongoDBUtil {
     private static MongoClient client ;
 
     private MongoDBUtil(){
-        client = new MongoClient("localhost",27017);
+//        client = new MongoClient(
+//                "localhost",27017);
     }
 
     public static synchronized MongoDatabase getConnect(String db){
@@ -42,7 +43,7 @@ public class MongoDBUtil {
         MongoCredential mongoCredential = MongoCredential.createCredential(username, defaultDataBaseName, password.toCharArray());
         List<MongoCredential> mongoCredentials = new ArrayList<>();
         mongoCredentials.add(mongoCredential);
-        MongoClient client = new MongoClient(address,mongoCredentials);
+        client = new MongoClient(address,mongoCredentials);
 
         //factory
         SimpleMongoDbFactory factory = new SimpleMongoDbFactory(client, defaultDataBaseName);

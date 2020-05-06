@@ -18,23 +18,10 @@ public class Main {
 //        studentService.regist("test","2222");
 //        Student student = studentService.login("test","2222");
 //        System.out.println(student);
-
-//        GroupMsg groupMsg = new GroupMsg();
-//        groupMsg.setGroupId("222");
-//        groupMsg.setGroupName("test2");
-//        List<String> managers = new ArrayList<>();
-//        managers.add("3");
-//        groupMsg.setManagers(managers);
-//        List<String> members = new ArrayList<>();
-//        members.add("1");
-//        members.add("3");
-//        members.add("4");
-//        members.add("5");
-//        members.add("6");
-//        groupMsg.setMembersId(members);
-//        groupMsg.setStatus((short) 2);
 //
-//        GroupService groupService = context.getBean(GroupService.class);
+        GroupService groupService = context.getBean(GroupService.class);
 //        groupService.createGroup(groupMsg);
+
+        groupService.delManager("444","5");
     }
 }
