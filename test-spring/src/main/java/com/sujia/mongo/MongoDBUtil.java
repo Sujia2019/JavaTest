@@ -34,22 +34,17 @@ public class MongoDBUtil {
         String username = "admin";
         String password = "admin";
         String defaultDataBaseName = "admin";
-
         //address
         ServerAddress address = new ServerAddress(host, port);
-
         //client
         MongoCredential mongoCredential = MongoCredential.createCredential(username, defaultDataBaseName, password.toCharArray());
         List<MongoCredential> mongoCredentials = new ArrayList<>();
         mongoCredentials.add(mongoCredential);
         MongoClient client = new MongoClient(address,mongoCredentials);
-
         //factory
         SimpleMongoDbFactory factory = new SimpleMongoDbFactory(client, defaultDataBaseName);
-
         //template
         MongoTemplate template = new MongoTemplate(factory);
-
         return template;
     }
 

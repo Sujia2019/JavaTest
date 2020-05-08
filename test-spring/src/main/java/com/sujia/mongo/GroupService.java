@@ -30,9 +30,10 @@ public class GroupService {
 
     }
 
+    //删除
     public void deleteGroup(String groupName){
         Query query=new Query(Criteria.where("groupName").is(groupName));
-        long count = mongoTemplate.remove(query,GroupMsg.class,"group").getDeletedCount();
+        mongoTemplate.remove(query,GroupMsg.class,"group").getDeletedCount();
     }
 
     public void searchGroup(String groupName){
