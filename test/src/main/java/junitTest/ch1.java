@@ -1,9 +1,10 @@
 package junitTest;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 public class ch1 {
-    public static void doWork(int x,int y,int z){
+    public static double doWork(int x,int y,int z){
         double k=0,j=0;
         if((x>3)&&(z<10)){
             k=x*y-1;
@@ -13,10 +14,12 @@ public class ch1 {
             j=x*y+10;
         }
         j=j%3;
+        return j;
     }
+
 
     @Test
     public void test(){
-
+        Assert.assertEquals(doWork(4,5,20),0.0,0.0);
     }
 }
