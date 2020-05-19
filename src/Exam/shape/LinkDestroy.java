@@ -23,7 +23,15 @@ public class LinkDestroy {
         }
     }
     public static void main(String[] args) {
-        int [][] mm = create(5,3);
+
+//        int [][] mm = create(7,5);
+        int [][]mm = new int[][]{
+            new int[]{0,2,0,9,0},
+            new int[]{0,0,9,9,1},
+            new int[]{9,9,9,0,0},
+            new int[]{9,0,0,2,2},
+            new int[]{0,1,0,1,1}
+        };
         printArray(mm);
         destroy(mm,0,3);
         printArray(mm);
