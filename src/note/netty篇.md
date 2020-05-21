@@ -140,7 +140,7 @@ NIO的通道类似于流，但有些区别如下：
 ```
 1. 写数据到缓冲区；
 
-2. 调用buffer.flip()方法；
+2. 调用buffer.flip()方法；(写完后将缓存字节数组的指针指向数组下标0，表示可以开始读取了～)
 
 3. 从缓冲区中读取数据；
 
@@ -197,12 +197,14 @@ NIO的通道类似于流，但有些区别如下：
 ![avatar](selector2.png)
 
 ###零拷贝 mmap sendFile
+
 零拷贝这三个字，一直是服务器网络编程的关键字，任何性能优化都离不开。在 Java 程序员的世界，常用的零拷贝有 mmap 和 sendFile。
 还是放上链接吧
-
+![avatar](https://upload-images.jianshu.io/upload_images/4236553-174b8d9cc6119e67.png?imageMogr2/auto-orient/strip|imageView2/2/format/webp)
 * mmap内存映射，小数据。从内核拷贝到socket缓冲区     
 * sendFile DMA直接存储器
-**https://www.jianshu.com/p/275602182f39**
+
+**[零拷贝](https://www.jianshu.com/p/275602182f39)**
 
 ###IO多路复用
 select poll epoll
