@@ -177,3 +177,5 @@ db.inventory.find( { }, { item: 1, status: 1 } );
 * 应用场景
     1. redis：数据量较小的更性能操作和运算上
     2. MongoDB:主要解决海量数据的访问效率问题
+    
+##面试篇

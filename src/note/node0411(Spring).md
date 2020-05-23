@@ -82,5 +82,29 @@ mybatis(ibatis)(半自动化ORM框架)
 * PROPAGATION_NOT_SUPPORTED--以非事务方式执行操作，如果当前存在事务，就把当前事务挂起。
 * PROPAGATION_NEVER--以非事务方式执行，如果当前存在事务，则抛出异常。
 
+## 面试篇
+Spring 是一种轻量级开发框架，旨在提高开发人员的开发效率以及系统的可维护性。
+我们一般说 Spring 框架指的都是 Spring Framework，它是很多模块的集合，使用这些模块可以很方便地协助我们进行开发。
+这些模块是：核心容器、数据访问/集成,、Web、AOP（面向切面编程）、工具、消息和测试模块。
 
+### Spring 框架中用到了哪些设计模式？
+* 工厂设计模式 : Spring使用工厂模式通过 BeanFactory、ApplicationContext 创建 bean 对象。
+* 代理设计模式 : Spring AOP 功能的实现。
+* 单例设计模式 : Spring 中的 Bean 默认都是单例的。
+* 包装器设计模式 : 我们的项目需要连接多个数据库，而且不同的客户在每次访问中根据需要会去访问不同的数据库。这种模式让我们可以根据客户的需求能够动态切换不同的数据源。
+* 观察者模式: Spring 事件驱动模型就是观察者模式很经典的一个应用。
+* 适配器模式 :Spring AOP 的增强或通知(Advice)使用到了适配器模式、spring MVC 中也是用到了适配器模式适配Controller。
+
+### Spring模块
+* Spring Core： 基础,可以说 Spring 其他所有的功能都需要依赖于该类库。主要提供 IoC 依赖注入功能。
+* Spring Aspects ： 该模块为与AspectJ的集成提供支持。
+* Spring AOP ：提供了面向切面的编程实现。
+* Spring JDBC : Java数据库连接。
+* Spring JMS ：Java消息服务。
+* Spring ORM : 用于支持Hibernate等ORM工具。
+* Spring Web : 为创建Web应用程序提供支持。
+* Spring Test : 提供了对 JUnit 和 TestNG 测试的支持。
+
+SpringMVC 
+[mvc](springmvc.png)
 
