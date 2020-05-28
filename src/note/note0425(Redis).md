@@ -106,7 +106,7 @@ Redis sentinel 是一个分布式系统中监控 redis 主从服务器，并在�
         没有解决 master 写的压力
         
 * 集群(Proxy)
- ![avatar](redis-cluster.png)
+ ![redis-cluster](redis-cluster.png)
  Twemproxy 是一个 Twitter 开源的一个 redis 和 memcache 快速/轻量级代理服务器； 
  Twemproxy 是一个快速的单线程代理程序，支持 Memcached ASCII 协议和 redis 协议。
  
