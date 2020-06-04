@@ -210,4 +210,30 @@ public class Sort {
         return resultArr;
     }
 
+    //二分查找
+    public static int Search(int[] a,int v,int low,int high){
+        if(low>high) return 0;
+        int mid=(low+high)/2;
+        if(v==a[mid]) return mid;
+        if(v<a[mid]) return Search(a,v,low,mid-1);
+        else return Search(a,v,mid+1,high);
+    }
+    //二分查找 非递归
+    public static int Search(int[] a,int key){
+        int left = 0;
+        int right = a.length-1;
+        int mid;
+        while (left<=right){
+            mid = (left+right)/2;
+            if(a[mid] == key){
+                return a[mid];
+            }else if(a[mid]<key){
+                left = mid+1;
+            }else{
+                right = mid-1;
+            }
+        }
+        return -1;
+    }
+
 }

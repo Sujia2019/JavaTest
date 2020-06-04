@@ -10,7 +10,8 @@ public class Yellow implements Color {
 
     @Override
     public void bePaint(String penType, String name) {
-        System.out.println("PenType:"+penType+"  ColorName:"+colorName+"  PaintSomething:"+name);
+        System.out.println("PenType:"+penType+"  ColorName:"
+                +colorName+"  PaintSomething:"+name);
     }
     public String getColorName() {
         return colorName;
