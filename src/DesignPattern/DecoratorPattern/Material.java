@@ -1,18 +1,6 @@
 package DesignPattern.DecoratorPattern;
 
-public class Material {
-    String name="name";
-    int cost;
-    int count=0;
-
-    public int getCost(){
-        return cost*count;
-    }
-
-    public void setCount(int count){
-        this.count = count;
-    }
-
-
-
+public abstract class Material extends Drink {
+    //所有调料必须重新实现描述方法
+    public abstract String getDescription();
 }

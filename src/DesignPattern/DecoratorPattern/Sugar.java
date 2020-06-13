@@ -1,17 +1,17 @@
 package DesignPattern.DecoratorPattern;
 
 public class Sugar extends Material{
-    String name="sugar";
-    int cost = 1;  //
-    int count = 0;//10g
-
+    private Drink drink;
+    public Sugar(Drink drink){
+        this.drink = drink;
+    }
+    @Override
+    public String getDescription() {
+        return "糖，" +  drink.getDescription() ;
+    }
     @Override
     public int getCost() {
-        return super.getCost();
-    }
-
-    @Override
-    public void setCount(int count) {
-        super.setCount(count);
+        //把茶的价格加上糖的价格，得到最后结果
+        return 1 + drink.getCost();
     }
 }
