@@ -11,7 +11,7 @@ public class RobotStaticProxy implements Say{
     @Override
     public void saySomething(String something) {
         before();
-        say.saySomething("[ "+something+" ]");
+        say.saySomething("[ static proxy ] --- [ "+something+" ]");
         after();
     }
 
