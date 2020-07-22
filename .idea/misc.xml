@@ -8,6 +8,7 @@
         <option value="$PROJECT_DIR$/test/pom.xml" />
         <option value="$PROJECT_DIR$/netty/pom.xml" />
         <option value="$PROJECT_DIR$/test-spring/pom.xml" />
+        <option value="$PROJECT_DIR$/bigData/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

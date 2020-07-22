@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="bigData" />
         <module name="test-spring" />
         <module name="netty" />
         <module name="all" />
@@ -14,6 +15,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="all" target="1.5" />
+      <module name="bigData" target="1.5" />
       <module name="mavenTest" target="1.5" />
       <module name="mongo" target="6" />
       <module name="mongotest" target="1.5" />
