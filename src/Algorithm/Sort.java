@@ -236,4 +236,37 @@ public class Sort {
         return -1;
     }
 
+    //递归写法
+    public static int test(int[] a,int start,int end,int key){
+        if(start<=end){
+            int mid = (start+end)/2;
+            if(a[mid]==key){
+                return a[mid];
+            }else if(a[mid]<key){
+                return test(a,mid+1,end,key);
+            }else if(a[mid]>key){
+                return test(a,start,mid-1,key);
+            }
+        }
+        return -1;
+    }
+
+    public static void main(String[] args) {
+        int[] a = new int[]{2,3,4,5,6,7,8,9,13};
+//        int get = search(0,a.length-1,5,a);
+        int get = test(a,0,a.length,5);
+        System.out.println(get);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 }

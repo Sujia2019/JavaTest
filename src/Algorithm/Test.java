@@ -20,6 +20,9 @@ public class Test {
 //        String s ;
 //        System.out.println("s="+s);
 //        Arrays.asList()//返回的是他自己实现的ArrayList,不是java.util.ArrayList;
+
+
+
     }
 }
 
