@@ -2,7 +2,6 @@
 *.iml
 *.ipr
 *.iws
-.idea/
 out
 lib
 将删除 netty/src/test/
@@ -19,3 +18,7 @@ lib
 将删除 test/src/main/resources/
 将删除 test/src/test/
 将删除 test/target/
+/.idea/
+将删除 bigData/target/
+将删除 .idea/
+将删除 JavaTest.iml
