@@ -5,3 +5,17 @@
 .idea/
 out
 lib
+将删除 netty/src/test/
+将删除 netty/target/
+将删除 src/Algorithm/past/tanxinfa/
+将删除 src/JVMTest/gc.jpg
+将删除 test-spring-boot/pom.xml
+将删除 test-spring-boot/src/main/java/com/example/testspringboot/TestSpringBootApplication.java
+将删除 test-spring-boot/src/main/resources/
+将删除 test-spring-boot/src/test/
+将删除 test-spring-boot/target/
+将删除 test-spring/src/main/java/com/sujia/testaop/
+将删除 test-spring/target/
+将删除 test/src/main/resources/
+将删除 test/src/test/
+将删除 test/target/
