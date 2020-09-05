@@ -19,10 +19,16 @@
         <module>test</module>
         <module>test-spring</module>
         <module>bigData</module>
-        <module>test-spring</module>
+        <module>netty</module>
     </modules>
     <dependencies>
 
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.12</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
 </project>
