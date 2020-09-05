@@ -9,23 +9,18 @@ public class Test {
         Pen small = new SmallPen();
         Pen mid = new MidPen();
         Pen big = new BigPen();
-        Color red = new Red();
-        Color black = new Black();
-        Color yellow = new Yellow();
-        Color green = new Green();
-        Color blue = new Blue();
 
-        small.setColor(red);
-        mid.setColor(black);
+        small.setColor(new Red());
+        mid.setColor(new Black());
         mid.drawSomething("drawing...");
-        big.setColor(blue);
+        big.setColor(new Blue());
         big.drawSomething("drawing...");
 
-        big.setColor(red);
+        big.setColor(new Yellow());
         big.drawSomething("drawing...");
         mid.drawSomething("drawing...");
 
-        small.setColor(green);
+        small.setColor(new Green());
         small.drawSomething("drawing...");
 
 

@@ -7,6 +7,11 @@ package DesignPattern.DecoratorPattern;
  */
 
 public abstract class Drink {
-    Sugar sugar;
-    Mocha mocha;
+    String description = "Drink";
+        //饮料的描述
+    public String getDescription(){
+        return description;
+    }
+    //返回饮料的价钱
+    public abstract int getCost();
 }
