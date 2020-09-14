@@ -1,7 +1,4 @@
 package Algorithm.leetcode;
-
-import java.util.*;
-
 //给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。
 //
 // 说明：
@@ -22,16 +19,18 @@ import java.util.*;
 // 👍 1463 👎 0
 public class ch0831 {
     public int singleNumber(int[] nums) {
-        Set<Integer> set = new HashSet<>();
-        for (int key : nums) {
-            if (set.contains(key)) {
-                set.remove(key);
-            } else {
-                set.add(key);
+        for(int i=0;i<nums.length;i++){
+            for(int j=i+1;j<nums.length;j++){
+                if(nums[i]==nums[j]){
+                    break;
+                }else{
+                    if(j==nums.length-1){
+                        return nums[i];
+                    }
+                }
             }
         }
-        Integer[] res = new Integer[]{0};
-        return set.toArray(res)[0];
+        return 0;
     }
 
     public static void main(String[] args) {
