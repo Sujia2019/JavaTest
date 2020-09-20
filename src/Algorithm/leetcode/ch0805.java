@@ -18,6 +18,24 @@ public class ch0805 {
 //    public static TreeNode createTree(){
 //
 //    }
+private static class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+
+    TreeNode() {
+    }
+
+    TreeNode(int val) {
+        this.val = val;
+    }
+
+    TreeNode(int val, TreeNode left, TreeNode right) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
+    }
+}
     public static boolean compareTree(TreeNode tree1,TreeNode tree2){
         if(tree1==null&&tree2==null){
             return true;
@@ -44,15 +62,4 @@ public class ch0805 {
         System.out.println(isSame);
     }
 }
-class TreeNode{
-    int val;
-    TreeNode left;
-    TreeNode right;
-    TreeNode(){}
-    TreeNode(int val){this.val=val;}
-    TreeNode(int val,TreeNode left,TreeNode right){
-        this.val=val;
-        this.left=left;
-        this.right=right;
-    }
-}
+
