@@ -10,7 +10,8 @@ import java.util.*;
 public class ch0905 {
     private static List<String> resStrings = new ArrayList<>();
     private static String[] dict = new String[]{"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
-    public List<String> letterCombinations(String digits) {
+
+    public static List<String> letterCombinations(String digits) {
         if(digits.equals("")){
             return resStrings;
         }
@@ -27,6 +28,11 @@ public class ch0905 {
         for(Character c : dict[Integer.parseInt(String.valueOf(digits.charAt(index)))].toCharArray()){
             trackBack(temp+c,digits,index+1);
         }
+    }
+
+    public static void main(String[] args) {
+        List<String> list = letterCombinations("");
+        System.out.println(list);
     }
 
 }
