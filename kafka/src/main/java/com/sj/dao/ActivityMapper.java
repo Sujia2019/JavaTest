@@ -16,7 +16,6 @@ public interface ActivityMapper {
             "activity_message," +
             "activity_describe," +
             "provider," +
-            "sender," +
             "create_time," +
             "online_time," +
             "deadline," +
@@ -27,7 +26,6 @@ public interface ActivityMapper {
             "#{activity_message}" +
             "#{activity_describe}," +
             "#{provider}," +
-            "#{sender}," +
             "#{createTime}," +
             "#{onlineTime}," +
             "#{deadline}," +

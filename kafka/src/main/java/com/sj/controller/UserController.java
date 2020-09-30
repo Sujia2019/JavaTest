@@ -1,6 +1,6 @@
 package com.sj.controller;
 
-import com.easyarch.entity.User;
+import com.sj.model.User;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +15,8 @@ public class UserController {
         user.setUserId(1);
         user.setUserName("岚贝贝");
         user.setUserAuth(0);
+        user.setUserAccount("test");
+        user.setUserPwd("123456");
         return user;
     }
 }

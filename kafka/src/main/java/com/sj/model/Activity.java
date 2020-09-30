@@ -13,7 +13,6 @@ public class Activity {
     private String activityMessage;
     private String activityDescribe;
     private int provider;
-    private int sender;
     private Date createTime;
     private Date onlineTime;
     private Date deadline;

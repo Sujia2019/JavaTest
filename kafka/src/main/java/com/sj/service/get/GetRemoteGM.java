@@ -1,19 +1,15 @@
-package com.sj.service;
+package com.sj.service.get;
 
+import com.sj.model.Message;
+import com.sj.service.api.GetRemoteService;
 import com.sj.statics.StaticConfigs;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.listener.ContainerProperties;
 import org.springframework.kafka.listener.MessageListener;
-import org.springframework.stereotype.Service;
 
-@Service
-public class GetRemoteActivity extends GetRemoteService<Message> {
+public class GetRemoteGM extends GetRemoteService<Message> {
     private static final Logger logger = LoggerFactory.getLogger(GetRemoteActivity.class);
-
-    public GetRemoteActivity() {
-    }
-
     @Override
     public Message get() {
         return null;
@@ -24,17 +20,16 @@ public class GetRemoteActivity extends GetRemoteService<Message> {
         return null;
     }
 
-    //消费者监听容器
     @Override
-    public ContainerProperties setContainerProps(MessageListener<Integer, Message> listener) {
+    public ContainerProperties setContainerProps(MessageListener<String, Message> listener) {
         ContainerProperties containerProps = new ContainerProperties(
-                StaticConfigs.TOPIC_PUSH_ACTIVITY);
+                StaticConfigs.TOPIC_PUSH_GM); // 获取系统推送消息
         containerProps.setMessageListener(listener);
         return containerProps;
     }
 
     @Override
-    public MessageListener<Integer, Message> setMessageListener() {
+    public MessageListener<String, Message> setMessageListener() {
         return msg -> {
             /*
              * 获取队列中的消息的方法
@@ -44,6 +39,4 @@ public class GetRemoteActivity extends GetRemoteService<Message> {
             handle(msg.value());
         };
     }
-
-
 }
