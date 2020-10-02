@@ -4,7 +4,12 @@ import java.util.NoSuchElementException;
 
 public enum CODE {
     PUSH_ACTIVITY("推送活动", StaticConfigs.TOPIC_PUSH_ACTIVITY),
-    PUSH_GM("系统消息", StaticConfigs.TOPIC_PUSH_GM);
+    PUSH_GM("系统消息", StaticConfigs.TOPIC_PUSH_GM),
+
+
+    SYSTEM_OK("成功",StaticConfigs.SUCCESS),
+    SYSTEM_ERROR("错误",StaticConfigs.ERROR)
+    ;
 
 
     private String description;
