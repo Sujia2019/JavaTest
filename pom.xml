@@ -6,6 +6,7 @@
 
     <groupId>JavaTest</groupId>
     <artifactId>JavaTest</artifactId>
+    <packaging>pom</packaging>
     <version>1.0.0</version>
 
     <properties>
@@ -20,6 +21,7 @@
         <module>test-spring</module>
         <module>bigData</module>
         <module>netty</module>
+        <module>kafka</module>
     </modules>
     <dependencies>
 
