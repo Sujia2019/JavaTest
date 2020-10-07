@@ -31,7 +31,7 @@ public class Test {
         GroupService service = new GroupService();
 
 
-//        service.createGroup(groupMsg);
+//        com.sj.service.createGroup(groupMsg);
 
         service.deleteGroup("test3");
 

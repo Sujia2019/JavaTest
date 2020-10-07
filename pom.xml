@@ -22,6 +22,7 @@
         <module>bigData</module>
         <module>netty</module>
         <module>kafka</module>
+        <module>rpc</module>
     </modules>
     <dependencies>
 
