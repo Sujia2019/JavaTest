@@ -7,6 +7,7 @@ import com.sj.demo.param.RpcRequest;
 import com.sj.demo.param.RpcResponse;
 import com.sj.demo.serialize.Serializer;
 import com.sj.demo.util.IpUtil;
+import com.sj.demo.util.RpcException;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -28,7 +29,7 @@ public class NettyClient extends Client {
     }
 
     public void init(String address, final Serializer serializer, final RpcInvokerFactory rpcInvokerFactory) throws InterruptedException {
-
+        final NettyClient nettyClient = this;
         this.group = new NioEventLoopGroup();
         Bootstrap bootstrap = new Bootstrap();
         bootstrap.group(group)
@@ -40,7 +41,7 @@ public class NettyClient extends Client {
                                 .addLast(new IdleStateHandler(0, 0, Beat.BEAT_INTERVAL, TimeUnit.SECONDS))  // beat N, close if fail
                                 .addLast(new NettyEncoder(RpcRequest.class, serializer))
                                 .addLast(new NettyDecoder(RpcResponse.class, serializer))
-                                .addLast(new NettyClientHandler(rpcInvokerFactory));
+                                .addLast(new NettyClientHandler(rpcInvokerFactory,nettyClient));
                     }
                 })
                 .option(ChannelOption.TCP_NODELAY, true)
@@ -60,18 +61,19 @@ public class NettyClient extends Client {
     }
 
     @Override
-    public void asyncSend(RpcRequest request) {
-
-    }
-
-    @Override
-    public Object getRemoteProxy(Class<?> clazz) {
-        return null;
+    public void asyncSend(RpcRequest request) throws InterruptedException {
+        this.channel.writeAndFlush(request).sync();
     }
 
     @Override
     public void close() {
-
+        if (this.channel != null && this.channel.isActive()) {
+            this.channel.close();
+        }
+        if (this.group != null && !this.group.isShutdown()) {
+            this.group.shutdownGracefully();
+        }
+        logger.debug("rpc netty client close");
     }
 
     @Override

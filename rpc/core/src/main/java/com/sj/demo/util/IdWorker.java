@@ -1,4 +1,4 @@
-package Algorithm.snowFlake;
+package com.sj.demo.util;
 
 public class IdWorker {
     //因为二进制里面第一个bit位 1代表复数，但我们要生成的id都是正数则首位为0
@@ -36,7 +36,7 @@ public class IdWorker {
     public long getTimestamp(){
         return System.currentTimeMillis();
     }
-    public IdWorker(long machineId,long roomId,long sequence){
+    public IdWorker(long machineId, long roomId, long sequence){
         //检查机房id和机器id是否超过31 不能小于0
         if(machineId > maxMachineId || machineId < 0){
             throw new IllegalArgumentException(

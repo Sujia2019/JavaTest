@@ -10,9 +10,7 @@ public abstract class Client {
         this.rpcReferenceBean = rpcReferenceBean;
     }
 
-    public abstract void asyncSend(RpcRequest request);
-
-    public abstract Object getRemoteProxy(Class<?> clazz);
+    public abstract void asyncSend(RpcRequest request) throws InterruptedException;
 
     public abstract void close();
 

@@ -1,12 +1,16 @@
 package com.sj.demo.net;
 
+import com.sj.demo.param.RpcFutureResponse;
+import com.sj.demo.param.RpcResponse;
 import com.sj.demo.registry.ServiceRegistry;
 import com.sj.demo.registry.imp.LocalRegistry;
+import com.sj.demo.util.RpcException;
 import lombok.Data;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Map;
+import java.util.concurrent.*;
 
 public class RpcInvokerFactory {
 
@@ -68,5 +72,48 @@ public class RpcInvokerFactory {
         return serviceRegistry;
     }
 
+    //------------------------future-response pool----------------------------
+    private ConcurrentMap<String, RpcFutureResponse> futureResponsePool=new ConcurrentHashMap<>();
 
+    public void setInvokerFuture(String requestId, RpcFutureResponse futureResponse){
+        futureResponsePool.put(requestId,futureResponse);
+    }
+    public void removeInvokerFuture(String requestId){
+        futureResponsePool.remove(requestId);
+    }
+
+    public void notifyInvokerFuture(String requestId, final RpcResponse rpcResponse){
+        //get
+        final RpcFutureResponse futureResponse=futureResponsePool.get(requestId);
+        if (futureResponse == null){
+            return;
+        }
+        // 回调
+       futureResponse.setResponse(rpcResponse);
+        //删除该实例
+        futureResponsePool.remove(requestId);
+    }
+    //------------------response callback ThreadPool-------------------
+    private ThreadPoolExecutor threadPoolExecutor=null;
+    private void executeResponseCallback(Runnable runnable) {
+        if (null == threadPoolExecutor) {
+            synchronized (this) {
+                if (null == threadPoolExecutor) {
+                    threadPoolExecutor = new ThreadPoolExecutor(20, 100, 60L, TimeUnit.SECONDS, new LinkedBlockingDeque<>(1000), r -> new Thread(r, "rpc, RpcInvokerFactory-responseCallbackThreadPool-" + r.hashCode()), (r, executor) -> {
+                        throw new RpcException("rpc Invoke Callback Thread pool is EXHAUSTED!");
+                    });
+
+                }
+            }
+        }
+        threadPoolExecutor.execute(runnable);
+    }
+
+
+
+    private void stopCallbackThreadPool() {
+        if (null!=threadPoolExecutor){
+            threadPoolExecutor.shutdown();
+        }
+    }
 }
