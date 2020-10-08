@@ -16,4 +16,29 @@ public abstract class Server {
 
     public abstract void stop();
 
+    /**
+     * callback when started
+     */
+    public void onStarted(){
+        if (startedCallback != null) {
+            try {
+                startedCallback.run();
+            } catch (Exception e) {
+                logger.error(">>>>>>>>>>rpc, server startedCallback error.",e);
+            }
+        }
+    }
+
+    /**
+     * callback when stop
+     */
+    public void onStop(){
+        if (stopCallback != null) {
+            try {
+                stopCallback.run();
+            } catch (Exception e) {
+                logger.error(">>>>>>>>>rpc, server StopCallback error .",e);
+            }
+        }
+    }
 }

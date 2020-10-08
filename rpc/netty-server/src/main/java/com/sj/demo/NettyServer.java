@@ -49,7 +49,7 @@ public class NettyServer extends Server {
                         .childOption(ChannelOption.SO_KEEPALIVE, true);
 
                 //bind
-
+                System.out.println("port:"+rpcProviderFactory.getPort());
                 ChannelFuture future = bootstrap.bind(rpcProviderFactory.getPort()).sync();
 
                 LOGGER.info(">>>>>>>>>>>>rpc remoting server start success , netType = {} , port ={}",NettyServer.class.getName(),rpcProviderFactory.getPort());
@@ -77,6 +77,13 @@ public class NettyServer extends Server {
 
     @Override
     public void stop() {
+        //destroy server thread
+        if (thread != null&& thread.isAlive()) {
+            thread.interrupt();
+        }
 
+        //on stop
+        onStop();
+        LOGGER.info(">>>>>>>>>>> xxl-rpc remoting server destroy success.");
     }
 }

@@ -34,7 +34,8 @@ public class RpcProviderFactory {
     public RpcProviderFactory() {
     }
 
-    public void initConfig(Class<? extends Server> serverType, Serializer serializer,
+    public void initConfig(Class<? extends Server> serverType,
+                           Serializer serializer,
                            int corePoolSize,int maxPoolSize,String ip,
                            int port, String accessToken, Class<? extends ServiceRegistry> serviceRegistryClass,
                            Map<String, String> serviceRegistryParam){
@@ -56,6 +57,7 @@ public class RpcProviderFactory {
 
         if (this.ip == null) {
             this.ip = IpUtil.getIp();
+            System.out.println("ip:"+this.ip);
         }
         if (this.port <= 0) {
             this.port = 7080;
@@ -147,7 +149,6 @@ public class RpcProviderFactory {
     public void addService(String iface, String version, Object serviceBean) {
         String serviceKey = makeServiceKey(iface, version);
         serviceData.put(serviceKey, serviceBean);
-
         LOGGER.info(">>>>>>>>>>>rpc, provider factory add service success ,serviceKey = {} , serviceBean ={} ", serviceKey, serviceBean.getClass());
     }
 
@@ -189,5 +190,9 @@ public class RpcProviderFactory {
             rpcResponse.setErrorMsg("Rpc Provider invokeService error-----"+e.getMessage());
         }
         return rpcResponse;
+    }
+
+    public void stop() throws Exception {
+        server.stop();
     }
 }

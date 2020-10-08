@@ -17,6 +17,12 @@
             <artifactId>core</artifactId>
             <version>1.0.0</version>
         </dependency>
+        <dependency>
+            <groupId>JavaTest</groupId>
+            <artifactId>api</artifactId>
+            <version>1.0.0</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
 </project>

@@ -55,7 +55,8 @@ public class RpcReferenceBean {
     public RpcReferenceBean() {
     }
 
-    public RpcReferenceBean(Serializer serializer, Class<? extends Client> clientClass,
+    public RpcReferenceBean(Class<? extends Client> clientClass,
+                            Serializer serializer,
                             Class<? extends ServiceRegistry> serviceRegistry,
                             Map<String, String> params,
                             Class<?> iface,String address,String accessToken,
