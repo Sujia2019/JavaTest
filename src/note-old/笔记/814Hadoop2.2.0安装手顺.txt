@@ -1,0 +1,202 @@
+真的头疼。。。
+配置Hadoop踩了无数个坑
+
+1   ：4台虚拟机，1台主机名叫master 其他三台 slave1，slave2，slave3
+
+2   ：ssh 免密登录，四台全部打通
+
+3   ：安装jdk1.8.0，安装hadoop，配置环境变量，hadoop的配bin和sbin都要配
+      我的hadoop文件夹在 /home/sujia目录下
+
+4   ：用当前用户，在hadoop目录下创建7个文件夹
+      在hadoop目录下，创建以下目录 权限设置为755（mkdir -m 755 xxx）
+      mkdir -m 755 datadir  
+      mkdir -m 755 tmp
+      mkdir -m 755 hadoopmrsys
+      mkdir -m 755 hadoopmrlocal
+      mkdir -m 755 nodemanagerlocal
+      mkdir -m 755 nodemanagerlogs
+      mkdir -m 755 nodemanagerremote
+
+5   ：cd /home/hadoop/hadoop2/etc/hadoop
+修改core-site.xml
+<configuration>
+   <property>
+      <name>fs.defaultFS</name>
+      <value>hdfs://master:9000</value>
+   </property>
+   <property>
+      <name>fs.default.name</name>
+      <value>hdfs://master:9000</value>
+   </property>
+</configuration>
+
+修改hdfs-site.xml
+<configuration>
+   <property>
+      <name>dfs.namenode.secondary.http-address</name>
+      <value>master:9001</value>
+   </property>
+   <property>
+      <name>dfs.namenode.name.dir</name>
+      <value>/home/hadoop/hadoop/namedir</value>
+   </property>
+   <property>
+      <name>dfs.datanode.data.dir</name>
+      <value>/home/hadoop/hadoop/datadir</value>
+   </property>
+   <property>
+      <name>hadoop.tmp.dir</name>
+      <value>/home/hadoop/hadoop/tmp</value>
+   </property>
+   <property>
+      <name>dfs.replication</name>
+      <value>2</value>
+   </property>
+   <property>
+      <name>dfs.permissions</name>
+      <value>false</value>
+   </property>
+   <property>
+      <name>dfs.webhdfs.enabled</name>
+      <value>true</value>
+   </property>
+   <property>
+      <name>dfs.support.append</name>
+      <value>true</value>
+   </property>
+   <property>
+      <name>hadoop.proxyuser.hadoop.hosts</name>
+      <value>*</value>
+   </property> 
+   <property>
+      <name>hadoop.proxyuser.hadoop.groups</name>
+      <value>*</value>
+   </property>
+   <property>
+      <name>dfs.ha.fencing.methods</name>
+      <value>sshfence</value>
+   </property>
+   <property>
+      <name>dfs.ha.fencing.ssh.private-key-files</name>
+      <value>/home/hadoop/.ssh/id_rsa</value>
+  </property>
+</configuration>
+
+cp mapred-site.xml.template mapred-site.xml
+修改mapred-site.xml
+<configuration>
+    <property>
+       <name>mapreduce.framework.name</name>
+       <value>yarn</value>
+    </property>
+    <property>
+       <name>mapreduce.jobhistory.address</name>
+       <value>master:10020</value>
+    </property>
+    <property>
+       <name>mapred.job.tracker</name>
+       <value>master:54311</value>
+    </property>
+    <property>
+       <name>mapreduce.jobhistory.webapp.address</name>
+       <value>master:19888</value>
+    </property>
+    <property>
+       <name>mapred.system.dir</name>
+       <value>/home/hadoop/hadoop/hadoopmrsys</value>
+       <final>true</final>
+    </property>
+    <property>
+       <name>mapred.local.dir</name>
+       <value>/home/hadoop/hadoop/hadoopmrlocal</value>
+       <final>true</final>
+    </property>
+</configuration>
+
+修改yarn-site.xml
+<configuration>
+    <property>
+       <name>yarn.nodemanager.aux-services</name>
+       <value>mapreduce_shuffle</value>
+    </property>
+    <property>
+       <name>yarn.nodemanager.aux-services.mapreduce.shuffle.class</name>
+       <value>org.apache.hadoop.mapred.ShuffleHandler</value>
+    </property>
+    <property>
+       <name>yarn.nodemanager.local-dirs</name>
+       <value>/home/hadoop/hadoop/nodemanagerlocal</value>
+    </property>
+    <property>
+       <name>yarn.nodemanager.log-dirs</name>
+       <value>/home/hadoop/hadoop/nodemanagerlogs</value>
+    </property>
+    <property>  
+       <name>yarn.nodemanager.remote-app-log-dir</name>  
+       <value>/home/hadoop/hadoop/nodemanagerremote</value>  	
+    </property>
+    <property>
+       <name>yarn.resourcemanager.address</name>
+       <value>master:8032</value>
+    </property>
+    <property>
+       <name>yarn.resourcemanager.scheduler.address</name>
+       <value>master:8030</value>
+    </property>
+    <property>
+       <name>yarn.resourcemanager.resource-tracker.address</name>
+       <value>master:8031</value>
+    </property>
+    <property>
+       <name>yarn.resourcemanager.admin.address</name>
+       <value>master:8033</value>
+    </property>
+    <property>
+       <name>yarn.resourcemanager.webapp.address</name>
+       <value>master:18088</value>
+    </property>
+    <property>
+       <name>yarn.nodemanager.resource.memory-mb</name>   
+       <value>2048</value>
+    </property>
+</configuration>
+
+6   ：修改主机slaves
+        slave1
+        slave2
+        slave3
+
+7   ：修改hadoop-env.sh
+            export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
+            export JAVA_HOME=/home/sujia/jdk1.8.0
+  
+
+      修改yarn-env.sh
+         export JAVA_HOME=/home/sujia/jdk1.8.0
+
+8   ：启动
+
+        1、格式化：
+            hdfs namenode -format   //只启动一次！！以后就忘掉他！
+        2、启动dfs：
+        start-dfs.sh
+        3、检验dfs：
+        hdfs dfsadmin -report
+        或者用web检测：
+        http://master:50070
+        4、启动yarn
+        start-yarn.sh
+        检验yarn：
+        http://master:18088
+      关闭hadoop
+        stop-yarn.sh
+        stop-dfs.sh
+
+踩过的坑：
+
+一定一定不要去root目录下。。去那儿改主机名啥的，配置文件后source一下，完事儿后一定要出来！！
+
+这个过程中我还改了一下ip地址，傻了，导致ssh里面的密钥出错，重发一遍，重新免密通一遍
+
+千万不要format！只用format一次！不然的话就会连不上，不在一个集群里， 要把创建的7个文件夹全删掉重来，新生成的全部删掉，一大堆全删掉。

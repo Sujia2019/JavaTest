@@ -1,0 +1,22 @@
+RDBMS
+
+两种数据    事实（时间）     
+           维度（缓慢     快速）
+
+redo
+undo
+ 
+事务四大隔离级别
+read  uncommit        r u 脏读    
+read commit        幻读   解决了脏读
+repeatable read     可重复读   解决了幻读
+seralizable 串行化       
+
+触发器
+
+视图
+
+存储结构
+
+普通索引
+

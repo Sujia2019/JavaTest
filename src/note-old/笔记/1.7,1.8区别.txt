@@ -1,0 +1,19 @@
+hashmap 继承自Object类
+Class HashMap<K,V>   K是keys，V指的是映射的值
+所有已实现的接口有
+Serializable接口可序列化， Cloneable借口可克隆
+直接已知子类有
+LinkedHashMap，PrinterStateReasons
+公共类HashMap <K，V> 
+扩展AbstractMap <K，V>
+实现Map <K，V>，Cloneable，Serializable
+基于哈希表的Map接口实现。此实现提供所有可选的映射操作，并允许 空值和空键。（HashMap 类大致相当于Hashtable，除了它是不同步的并且允许空值。）这个类不保证Map的顺序; 特别是，它不保证订单会随着时间的推移保持不变。
+
+对hashmap简单了解，和方法的使用，搜索相关资料，查询1.8中的优化
+
+接口java.util.Map，此接口主要有四个常用的实现类，分别是：
+    HashMap：继承abstractMap,底层实现数组+链表+红黑树（JDK1.8增加了红黑树部分），线程不安全，kv结构，可以用 Collections 的 synchronizedMap 方法使HashMap具有线程安全的能力
+Hashtable：继承Dictionary类，是遗留类，很多映射的常用功能与HashMap类似，线程安全，但是不建议在新代码使用，不需要线程安全的场合可以用HashMap替换，需要线程安全的场合可以用ConcurrentHashMap替换。
+    ConcurrentHashMap：Hashtable并发性不如ConcurrentHashMap，因为ConcurrentHashMap引入了分段锁
+    LinkedHashMap：是HashMap的一个子类，保存了记录的插入顺序，在用Iterator遍历LinkedHashMap时，先得到的记录肯定是先插入的，也可以在构造时带参数，按照访问次序排序。
+    TreeMap：继承abstractMap,实现SortedMap接口，能够把它保存的记录根据键排序，默认是按键值的升序排序，也可以指定排序的比较器，当用Iterator遍历TreeMap时，得到的记录是排过序的。如果使用排序的映射，建议使用TreeMap。在使用TreeMap时，key必须实现Comparable接口或者在构造TreeMap传入自定义的Comparator，否则会在运行时抛出java.lang.ClassCastException类型的异常。

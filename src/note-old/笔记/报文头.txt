@@ -1,0 +1,41 @@
+
+--------response----------
+
+cache-control: private, max-age=0, must-revalidate
+content-encoding: gzip
+content-type: text/html; charset=utf-8
+date: Tue, 23 Jul 2019 14:47:05 GMT
+etag: "5cd923caf5082f9af5719da57953eca2"
+server: Tengine
+set-cookie: _javaeye3_session_=BAh7BjoPc2Vzc2lvbl9pZCIlYmU1NzA1OWVhOGU2M2ZiMDU1YWY4NjczMGJiMWY3ODI%3D--013e3a9909f7c2a7349abe0cb0244bb2b07c9beb; domain=.iteye.com; path=/; HttpOnly
+status: 200
+vary: Accept-Encoding
+x-runtime: 223
+
+
+------request--------------
+
+:authority: www.iteye.com
+:method: GET
+:path: /blogs
+:scheme: https
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+accept-encoding: gzip, deflate, br
+accept-language: zh-CN,zh;q=0.9
+cookie: _javaeye_cookie_id_=1563551740123488; _ga=GA1.2.1710020684.1563551741; _gid=GA1.2.1931382463.1563889410; _javaeye3_session_=BAh7BjoPc2Vzc2lvbl9pZCIlYmU1NzA1OWVhOGU2M2ZiMDU1YWY4NjczMGJiMWY3ODI%3D--013e3a9909f7c2a7349abe0cb0244bb2b07c9beb; Hm_lvt_e19a8b00cf63f716d774540875007664=1563551740,1563705649,1563889410,1563893176; Hm_lvt_6bcd52f51e9b3dce32bec4a3997715ac=1563705649,1563889410,1563893177; Hm_lpvt_e19a8b00cf63f716d774540875007664=1563893375; dc_tos=pv3nun; Hm_lpvt_6bcd52f51e9b3dce32bec4a3997715ac=1563893375; _gat_gtag_UA_127895514_6=1
+if-none-match: "5cd923caf5082f9af5719da57953eca2"
+referer: https://www.iteye.com/ask
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36
+
+
+---------我本机开端口，浏览器访问后的Get---------
+GET / HTTP/1.1
+Host: localhost:8888
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9
+Cookie: Idea-a23199a3=5cd54033-4ac7-42c7-a5a1-eb025a72efa0

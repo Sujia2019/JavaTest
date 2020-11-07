@@ -1,0 +1,18 @@
+
+ZooKeeper  
+com.test.xxx.InfoTest#getInfo
+com->test->xxx->InfoTest->getInfo()->IP:port
+
+Spring Cloud
+
+Zookeeper的分布式管理中
+C A P    强一致性  保证CP    C一致性  A可用性   P分区
+
+???????
+Euroka  server service-demo service-consumer和client的区别？？
+
+consul  server client service   我们研究的都是server端吗，用户端是怎么操作的，举个例子
+
+CDN回源
+
+banner生成器

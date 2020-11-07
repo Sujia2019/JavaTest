@@ -1,0 +1,11 @@
+python
+"""xxx xxx"""
+三引号可以直接生成文档
+
+abstract
+inspect类
+
+用装饰器写一个pyunit测试
+
+Testcall 直接写调的是metaclass的
+带（）调用的__call__

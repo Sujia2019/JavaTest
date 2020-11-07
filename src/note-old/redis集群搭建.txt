@@ -1,0 +1,13 @@
+需求 服务器一台 5版本以上的redis
+1，配置环境变量
+2，创建目录，好存放6个节点的redis.config
+3，注意修改的点： port = , cluster-enabled = yes ,daemonize = yes,  read-only = no
+                    cluster-node-config = xxx.conf(自己指定一个)
+
+4, redis-cli --cluster create address:port ... ... ...
+
+注意的点，如果cluster info集群状态fail
+
+可以参考的解决方案，flushall，flushdb 清空数据库
+删掉*.aof *.rdb 删掉node.conf
+重新添加节点s

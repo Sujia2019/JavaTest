@@ -1,0 +1,8 @@
+4大门:
+调用门 X
+陷阱门（r0--->r0）　　系统门(r3--->r0)
+任务门（r0--->r0） gss linux使用了妙招　躲避了gss换位的速度问题
+
+task_struct
+
+中断门(bios)（r0--->r0）  irq(28,function)

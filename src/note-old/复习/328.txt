@@ -1,0 +1,110 @@
+虚拟文件系统
+
+superblock (类型 ext3 ext4 sysfs proc)
+inode(文件和设备)
+file
+dentry----path
+
+元数据     数据
+
+
+
+类型    镜像    对象 file
+
+superblock用于分配inode
+
+
+open dopen read   wight
+
+定义自己的文件系统
+
+mount -t ext3 /dev/sdc /mnt/xxx
+
+sget拿文件系统 有点像双亲委派
+
+继承
+1，继承 extenfs java  c++  python   
+2，p组合式  ge
+
+container_of
+
+
+
+1，构建superblock 
+2
+inode->i_op = de- >i 
+
+
+
+deentree
+
+inode
+
+
+look_get_up
+
+
+
+。
+；；dir
+
+vfs mpage_bio_submit--->bio
+------
+queue
+------
+块驱动程序
+
+
+系统调用 aslinkage
+
+make manuconfigs
+
+
+1、netfilter   linux很少见的hook  路由转发 lvs
+
+2、socket
+
+3、网驱动
+
+4、netlink
+
+网有内核协议栈 不是vfs   多一个hook
+
+
+sim_netdev_ops
+
+netlink_unicast发出去
+
+
+
+
+
+1 汇编
+2 系统引导程序 演示系统如何从汇编到c
+    改系统 内核 rdisk ...    看内核源代码
+3 内核模块 填参数 两个模块间如何共享内存交换数据
+4 简单的文件系统 procfile
+5 核心数据结构
+6 文件系统基本操作 (proc)
+7 自定义文件系统
+8 设备 字符设备 块设备 网设备
+9 虚拟文件系统
+10 网 vfs---内核协议栈---驱动程序-device
+11 调度 内核线程调度 中断上半层 中断下班层
+12 系统调用 用户态---syscall--->entry64---mem，task_stuct,vfs,socket----queue(io调度)-->总线--->驱动绑定device--->驱动操作device的属性来读写硬件      中断管理  netfilter
+
+
+docker 
+四种网络模型
+（默认桥接）主机 hostonly 容器
+
+docker run -d -p22:22 -net=host 镜像名字 -name 容器名字
+网桥-----虚拟网桥、
+
+container模式
+
+
+
+
+
+

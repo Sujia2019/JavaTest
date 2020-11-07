@@ -1,0 +1,66 @@
+mkfifo  linux命令 管道
+
+C
+无名管道(用的少，子进程)
+有名管道   
+pipe();
+  
+linux万物皆文件  不是char的就是block(块-->磁盘)的  还有杂设备
+唯一不按文件处理的是网设备 (存socket)
+mysql 3种连接方式
+1，tcp/ip   网络socket  （jdbc）
+2，socket (不见得就是tcp/ip)   域socket(内存模仿socket) 
+3，pipe有名管道   bulkload
+   *shmget()
+   *shmat(把共享内存区对象映射到调用进程的地址空间)
+   *shmdt(断开共享内存连接)
+   *shmctl(共享内存管理)
+
+锁的底层是信号量做的
+
+System V架构 
+   
+boost 常用报错
+
+1、bstshm1-4----------共享内存 （知道就行）
+2、mbstshm1-6---------托管共享内存 *******
+3、bstmutex1-4--------同步
+                      1、创建并使用一个命名互斥对象
+                      2、使用共享内存管理命名互斥对象
+                      3、命名互斥对象与condition---wait/notify
+                      4、使用共享内存管理命名互斥对象与condition---wait/notify
+
+c++的锁
+name_mtx
+锁的底层就是share memory 共享内存
+
+
+
+pthread  多线程库
+boost库          (都还没装)
+  
+
+java的thread.start()是个detach型的，
+
+c里的线程是attach的
+
+
+非阻塞锁？
+阻塞锁？
+
+
+trylock 非阻塞锁，用的是自旋锁
+
+const_cast , static_cast , dynamic_cast , reinterpret_cast  四种强类型转换
+
+
+
+
+
+
+
+
+
+
+
+

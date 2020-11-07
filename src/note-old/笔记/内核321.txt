@@ -1,0 +1,72 @@
+rehash
+做线索链
+
+linux系统管理文件四种api
+/dev/sda      file inode dentry superblock(文件系统)
+
+
+             libc （c库）
+----------------------------------------
+               syscall
+
+                vfs 
+内存 |            |             |   socket
+调度 |            |block   disk |
+       字符驱动，    块调度(队列) |
+        杂驱动      块驱动----device
+                              磁盘
+linux进程状态
+TASK_RUNNING 包括两种类型的进程：1，正在运行的进程2，可以被运行的进程
+TASK_INTERRUPTIBLE 可中断进程‘
+
+
+软中断 
+申请ruanzhong软中断号
+共享中断
+软中断上半层引发
+下半层处理、
+
+
+waitq_head
+
+#define my_wait_event(q, condition)	
+do {					
+/*wait_queue_t*/ 
+        wait_queue_entry_t wait;		
+        wait.private = current;		
+        wait.func = wake_myself;	
+        add_wait_queue(q , &wait);	
+        for(;;)				
+        {				
+                if(condition)		
+                        break;		
+                set_current_state(TASK_INTERRUPTIBLE);	
+                printk("sleep......\n");		
+                schedule();				
+        }						
+        remove_wait_queue(q, &wait);			
+} while (0)						
+
+
+arm 操作系统 没有统一编址
+
+总线 
+软总线不负责配对
+
+驱动程序就是造个假象
+
+真正驱动是造一个device
+
+
+
+
+
+
+
+
+
+
+
+
+
+

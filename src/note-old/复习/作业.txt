@@ -1,0 +1,179 @@
+
+
+
+作业：   ********
+hashmap
+ArrayList
+TreeMap
+LinkList
+Set
+1.7,1.8 区别   考试前交  √
+
+做一个单例的饿汉模型
+通过无锁的方法写一个单例
+
+****写ScheduledThreadPool 自学
+
+生产者消费者模型 √
+写代码的时候不清楚内存怎么使用的，底层是怎么搞的
+讲理论的时候感觉，好像是这样，联系不到代码上  所以出了问题解决不出来，想不通
+
+面试官：
+传统行业： 问你java似嘛
+外包：    java死锁软锁似嘛
+互联网： java 1.6 1.7 1.8版本死锁软锁的区别
+
+******clh（rl）  mcs 两种锁
+
+***读一下Executors源代码  
+
+***实现一个mcslock
+
+****用U盘做一个，存文件，看不见是错误的，写反转代码可以看见
+
+****作业  往文件中插入数据  √
+
+717
+1****dom4j解析XML    √
+2****把插入内容的作业 改成nio形式    √
+3****用Gather Scather的方法写序列化 反序列化  √
+    把一个对象写入一个文件里，再从文件里读出来
+
+4*****  反射  √
+ 配置单
+s1-s60 String   s1=“sa1”   -----以此类推 
+i61-i120 int     i61=61         i61=61*2  
+配置单 生成类，再用类创建对象，再赋值，并打印出来
+
+思路 
+按行读取  获取K
+写入文件，写一个文件，内容是
+属性名 getter setter
+生成类
+
+通过反射创建对象
+getProperty 获取V，
+
+5*****调研 BeanUtil的动态代理 写代码
+           Cglib动态代理
+
+
+
+719
+模拟程序存储计算机
+
+1)写一个程序运行起来，
+2)通过这个程序生成一个java代码
+3)通过这个程序编译java类->class
+4)通过classloader加载
+5)new对象执行    
+
+****选做，把717那个作业生成的.java文件，写一个classloader，加载生成这个类.class  √
+
+721
+****用bio自己写一个协议 crc校验
+
+没事干就更新deepin
+sudo apt upgrade
+
+**画个页面
+***聊天室     √
+
+723 
+ 
+*拖动作业  onmousedown 
+**动态生成页面
+
+****www.iteye.com 爬下来 所有博客博文的title和摘要 爬下来  √
+*****启动两个tomcat T1 index.html a1,T2 index.html b1
+  通过一个server交互， 不断刷新页面是a1，b1内容交换   负载均衡器  ×
+*****自己写一个tomcat  √
+****通过ajax的post和get分别做一次提交 ×
+
+727
+****写一个avl
+     聚集索引建二叉树   存json 数据库
+
+85
+****写一个reactor模型      √      
+****netty重做tomcat √     读源码 netty FixedLength
+****UDP写一个自己的映射器   组播  
+****建4台虚拟机 ping通  √
+
+87
+****找到redis的启动函数入口   命令请求过来的解析函数
+
+89 
+****  countdownlauunch 任务提醒器
+****  写一个连接池 有最小连接数 最大连接数
+****  拿java写一个一致性哈希 在redis里应用   murmurHash3 查一下
+****  redis 抓包 模拟redis服务端 发response   nc模拟redis包
+
+811 
+**** 搭建mongo 增删改查    单测
+**** EHcache  搭建集中式缓存
+**** 装一个kafka
+
+813
+**** hadoop2实验环境安装手顺  搭建hadoop  √
+
+815
+**** 写一个脚本， xx -n 100 -f 文件xxx
+                xx -n 100
+                xx -f xxx
+                xx -f xxx -n 100
+               打印  您输入的文件是xxx，输入的数据是100 √
+**** 给java程序写一个启动脚本    
+**** 写一个单ATM机  登录  选择业务  判断    √
+
+816
+**** 写一个hadoop启动脚本  
+
+817  
+**** 调通consul      √
+**** 查一下那个不安全的报错怎么解决    √
+
+818
+**** 拿hydrix监控集群  √
+    启动多台service  多线程发送请求  请求状况
+
+819
+**** 做优化hadoop
+
+823 
+**** 读文件 1 根路径读文件  2 classpath
+**** mysql load data 批量导库
+**** 搭 新版本的els 改api
+设计网站  版本升级无影响 不能宕机 适应瓶颈 业务线  画一个架构 读多写少
+
+824
+**** 改写，加入pop sub 事件  服务下线通知 服务更新通知
+**** 基于zookeeper的远程注册
+
+825
+**** 通过SPI机制 扩展一个webSocketProtocol 实现dubbo
+        dubbo基本体系 dubbo源码  看源码
+
+827
+**** 二次排序 partition groupby 文理综 总成绩从大到小排，然后二次排序若总成绩
+        相等则比较理综成绩最高的排序
+
+10.5
+**** 封一个netty框架
+**** 消息驱动机制 模拟监听事件
+**** 抓包 MQTT 1个字节的报文头
+
+10.6 
+**** djingo框架 写一个管理系统
+**** 模拟tornado框架
+
+3.7
+****   红黑树   √
+
+
+
+
+3.15
+1,reactor多线程模型实现聊天程序 单聊 群聊 redis mysql存储
+2，测试reactor服务相关性能
+3，两道leetcode

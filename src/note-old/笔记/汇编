@@ -1,0 +1,34 @@
+cisc(复杂指令集，汇编语言)  risc(精简指令集)
+x86
+
+8086
+80286
+80386
+80486
+80586
+80686
+
+一条指令需要n个时钟周期完成 
+指令长度不固定   movwl $ffffffffeeeeeeee,%rax [--------|--64位----]
+	       movl $ffffffff,%eax          [--------|-32位-]
+
+cpu amd    c51
+intel
+服务器芯片   pc机芯片(游戏、专业)|(办公、非专业高功耗)|(上网本)        嵌入式芯片（单片机）
+至强(numa)   i9    i7             i3 i5          iU coreM 赛扬      atom   8051
+
+mips(龙芯)  powerPC(IBM) sparkc risc-v fpga
+
+ARM英国 精简指令
+服务器芯片                PC机                     嵌入式芯片（单片机）
+                  armv7-a(cortex-a,32位)      armv4--armv6 arm7 arm9  arm11(stm32)
+         armv8-a 64位（os）                     armv7/8-m   cortex-m(rtos,裸板编程)
+
+
+rtos   (函数库＋并发调度)
+os
+
+一条指令１个时钟周期　　　　　　　　　　　　　　　　　　　　　　　　　　　0x000000ff
+指令长度相同　　　　一条指令就是３２位　　mov  %r0,#ffffffff   [---mov---|--0--|---8位---]
+
+

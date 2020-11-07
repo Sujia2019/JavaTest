@@ -1,0 +1,122 @@
+主动
+被动
+
+数据库--->redis(速度)并行 异步
+事件----->tomcat(稳定)异步
+
+变被动为主动
+
+tomcat--->queue交换(1w/s tps)<--消费
+n*(400/s tps)
+tomcat---->mysql(400/s tps)
+
+智能指针不能new，
+c++多线程锁用了   { lock_guard(给谁上锁)  }
+      智能指针执行析构函数时取消上锁
+
+mutex   lock unlock
+
+读写锁
+先做一个共享锁，
+
+java里的信号量是自旋锁，boost这里面这几个锁也是实现的自旋的
+
+
+
+socket 
+INET默认ipv4
+tcp/ip    (跨主机两个进程)
+unit  (域，走内存拷贝，用得少)
+netlink   (也相当于内存拷贝，用户态和内核态通信)
+
+进程间通信： socket  共享io mmap(指定share内存) 共享内存 信号量 信号
+
+htonl 网络大小端转换
+地址转换说的是最小类型的高低地址转换
+如
+struct xxx{
+    short = 0x6162;
+    char[20] = abcde;    
+}
+x.a=0x6162;
+x.b=abcde;
+ --->   0x6261abcde
+htonl(x.a)-----[]6261
+htonl(x.b)-----[]abcde
+-------->拼出来后的这个大数组[]  这个过程叫序列化
+
+java默认大端
+
+socket八大参数
+
+tcp
+c------sync------>s srbuf[]
+<------ack+sync---->sync_wait
+
+
+udp
+点对点  组播(最有用)  广播
+
+io多路复用(偶发性)有监听性质
+select   fd_set     fd_zero&fd_set    fd_isset(all)
+poll     xpollin收   xpollout发        clientfds[all].reve
+epoll    x           x                 双队列
+
+
+
+c++面试必问
+1、stl库  vector与list区别    map实现逻辑  红黑树
+2、poll select  epoll区别
+3、进程间通信方式
+4、boost库  线程部分   guard部分  mutex内部实现原理
+5、boost-ptr  底层内部实现逻辑
+6、printf的问题  溢出攻击
+7、c++内存泄漏工具
+8、intel汇编 At&t汇编  （32位 64位加法）  常用指令
+9、libc.so库   glibc++_std.so
+
+nginx**(纯用户态的)  <令牌环>(rr  wrr rand sh dh)  负载均衡
+redis                                            内存
+mysql   锁实现       (sqlite,leveldb(lsm-tree)---rocksdb(rust))
+lvs
+
+
+C：指针 64,32位传参原理   内核
+
+**********数据结构会往死了问
+
+
+
+
+icech9
+
+q嵌入式芯片---(单片机)
+rtos(函数库+并发调度)
+
+一条指令一个时钟
+指令长度相同
+
+
+ppt 10,27 ,34
+函数压栈 
+movl 12(%ebp),%ecx #ecx
+movl 8(%ebq),%edx  #edx
+
+返回值放eax里
+
+
+
+as xxx -o
+ld xxx.o
+./xxx.out
+
+寄存器保护
+先把所有的先压栈
+
+
+
+
+
+
+
+

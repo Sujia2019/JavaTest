@@ -1,0 +1,27 @@
+如果要配置集群而不是单机版，我把配置文件放在了/extendfs/zkConfig目录下
+启动时带配置
+配置中的ip要带的是docker内置的网络   172.17.0.3
+docker run -v /extends/zkConfig/zk1/data:/data -v /extends/zkConfig/zk1/conf:/conf --name zookeeper-1 -d zookeeper
+docker run -v /extends/zkConfig/zk2/data:/data -v /extends/zkConfig/zk2/conf:/conf --name zookeeper-2 -d zookeeper
+docker run -v /extends/zkConfig/zk3/data:/data -v /extends/zkConfig/zk3/conf:/conf --name zookeeper-3 -d zookeeper
+
+
+在root用户下
+1. pull镜像
+2. run zookeeper:
+ docker run --name zookeeper -p 2181:2181 -d zookeeper
+3. 进入zookeeer
+ docker exec -it zookeeper bash
+4. 查看zookeeper状态,ip地址
+ zkServer.sh 
+5. 查看container的状态
+ docker inspect zookeeper
+   //查看ip地址
+ docker inspect --format='{{.NetworkSettings.IPAddress}}' zookeeper    (172.17.0.2)
+
+
+
+进入zookeeper查看注册信息:
+ zkCli -server 172.17.0.3:2181
+ ls /
+ ls /dubbo

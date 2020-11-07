@@ -1,0 +1,50 @@
+#include <iostream>
+using namespace std;  
+void main( )  
+{  
+    unsigned int a,b;  
+    cin >> a;  
+    cin >> b;  
+    __asm
+    {                      x86_64 ia32     x64  ia64
+        mov eax, a         汇编语言寄存器　　16位：ax(ah(8)+al(8))　
+        mov ebx, b 　　　　　　　　　　32位寄存器　eax
+        add eax, ebx                64位寄存器　rax
+        mov a, eax
+    } 
+    cout<<a<<endl;  
+}  
+
+
+cpu存储指令(缓存+寄存器)　　计算指令　　　控制指令 
+                                       je                         其他
+　　　　　　　　　　　　　　　　　　　　　　　ljmp(长跳)　　jmp（段跳）　　　　　　gdtr
+mov  　　　　　　　　　　　　　　　　　　　　rip----->指令计数器（指令寄存器）   idtr
+通用寄存器                              cs---->基地址寄存器,段基址寄存器    ldtr
+rax                                                     cr0(是否分段，是否分页)  cr1-4
+rbx　　                                flag(z c ...)
+rcx
+rdx
+r8---r15
+xmm?
+
+专用寄存器
+rsi  rdi(move/copy字符串)　　　实模式20位－－－>保护模式
+　　　　　　　　　　　　　　　　cs<-4+ip----->内存分好段落->放到了表里GDT：全局描述符表（list）
+段寄存器　　　　　　　　　　　　　　　　　　　  cs[index]+rip　　
+ds
+es
+fs
+gs　
+ss
+
+
+
+
+
+
+
+
+
+
+

@@ -6,6 +6,9 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Test {
     public static void main(String[] args) {
 //        int start = 0;
@@ -73,22 +76,41 @@ public class Test {
 //        }
 //        System.out.println(money);
 
-        String a = "abc";
-        String b = new String("abc");
-        String c = "abc";
-        System.out.println(a==c);
-        HashMap map = new HashMap();
-
-        System.out.println();
-
-        Object obj = new Object();
-
-    }
-
-
-//    public static void money(){
+//        String a = "abc";
+//        String b = new String("abc");
+//        String c = "abc";
+//        System.out.println(a==c);
+//        HashMap map = new HashMap();
 //
-//    }
-
-
+//        System.out.println();
+//
+//        Object obj = new Object();
+//        String str = "92057|99033|99999";
+//        String[] strs = str.split("");
+//        for (int i=0;i<strs.length;i++){
+//            System.out.println(strs[i]);
+//        }
+//        StringBuilder builder = new StringBuilder("18539403150");
+//        builder.insert(3,"-");
+//        builder.insert(8,"-");
+//        System.out.println(builder.toString());
+        String content = "18539";
+        String regexTel = "^((\\+?86)|(\\(\\+86\\)))?(13[0123456789][0-9]{8}|15[0123456789][0-9]{8}|18[0123456789][0-9]{8}|14[57][0-9]{8}|1349[0-9]{7}|17[01678][0-9]{8})$";
+        String regex = "^(0\\d{2,3}-?\\d{7,8})$";
+        Pattern p1 = Pattern.compile(regexTel);
+        Pattern p2 = Pattern.compile(regex);
+        Matcher matcher1 = p1.matcher(content);
+        Matcher matcher2 = p2.matcher(content);
+        if (matcher1.matches()) {
+            System.out.println("匹配");
+        }
+        if (matcher2.matches()) {
+            System.out.println("匹配");
+        }
+        if (matcher1.matches() || matcher2.matches()) {
+            System.out.println("匹配");
+        } else {
+            System.out.println("不匹配");
+        }
+    }
 }

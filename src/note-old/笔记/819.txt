@@ -1,0 +1,21 @@
+Zookeeper 3.4.6
+
+CAP
+
+C P 锁  数据一致性非常慢 
+
+A P 服务
+
+ZAB算法
+
+1、paxos算法
+2、ruft拜占庭
+3、zab自学
+
+区块链
+
+困了
+
+etcd
+
+SVM

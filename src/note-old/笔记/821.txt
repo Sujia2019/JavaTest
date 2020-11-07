@@ -1,0 +1,52 @@
+池  集合
+线程池做调度
+
+连接池：
+
+
+
+对于连接慢的 加闭锁
+
+zookeeper：2888心跳 3888传数据
+
+一般的数据库采用的是RDBMS
+
+
+Hbase 
+nosql数据库
+高并发写
+
+tbname
+列是动态的 columnfamily
+数据格式  qualifile（k）  value（timestamps时间戳）
+适合存储稀疏数据，不像一般的二维表会浪费空间（列名有，内容为空，会浪费）
+HRegionServer
+
+1NF  原子不可再分
+2NF  
+3NF
+
+B树 
+B+树  硬盘索引  在B树的基础上，存的是一大坨数据，链表，多表关联 数据是连续的
+B*不咋用的
+
+
+****网络
+****操作系统 （调度结构）
+****编译原理 
+****存储
+****数据结构
+
+LSM-Tree
+层级二叉树
+层级数据库
+leveldb
+
+rocksdb自学
+tidb ****
+
+Hbase存的是元数据的元数据（树的指针）
+Zookeeper存元数据（树）
+Hadoop存数据
+
+Hlog

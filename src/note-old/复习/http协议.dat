@@ -1,0 +1,115 @@
+一、URI结构
+HTTP使用统一资源标识符（URI）来传输数据和建立连接。URL（统一资源定位符）是一种特殊种类的URI，包含了用于查找的资源的足够的信息，我们一般常用的就是URL，而一个完整的URL包含下面几部分：
+1.协议部分
+该URL的协议部分为http:，表示网页用的是HTTP协议，后面的//为分隔符
+2.域名部分
+域名是www.fishbay.cn，发送请求时，需要向DNS服务器解析IP。如果为了优化请求，可以直接用IP作为域名部分使用
+3.端口部分
+域名后面的80表示端口，和域名之间用:分隔，端口不是一个URL的必须的部分。如果端口是80，也可以省略不写
+4.虚拟目录部分
+从域名的第一个/开始到最后一个/为止，是虚拟目录的部分。其中，虚拟目录也不是URL必须的部分，本例中的虚拟目录是/mix/
+5.文件名部分
+从域名最后一个/开始到?为止，是文件名部分；如果没有?，则是从域名最后一个/开始到#为止，是文件名部分；如果没有?和#，那么就从域名的最后一个/从开始到结束，都是文件名部分。本例中的文件名是76.html，文件名也不是一个URL的必须部分，如果没有文件名，则使用默认文件名
+6.锚部分
+从#开始到最后，都是锚部分。本部分的锚部分是first，锚也不是一个URL必须的部分
+7.参数部分
+从?开始到#为止之间的部分是参数部分，又称为搜索部分、查询部分。本例中的参数是name=kelvin&password=123456，如果有多个参数，各个参数之间用&作为分隔符。
+二、Request
+HTTP的请求包括：请求行(request line)、请求头部(header)、空行 和 请求数据 四个部分组成。
+Http请求消息结构
+抓包的request结构如下：
+GET /mix/76.html?name=kelvin&password=123456 HTTP/1.1
+Host: www.fishbay.cn
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Accept-Encoding: gzip, deflate, sdch
+Accept-Language: zh-CN,zh;q=0.8,en;q=0.6
+1.请求行
+GET为请求类型，/mix/76.html?name=kelvin&password=123456为要访问的资源，HTTP/1.1是协议版本
+2.请求头部
+从第二行起为请求头部，Host指出请求的目的地（主机域名）；User-Agent是客户端的信息，它是检测浏览器类型的重要信息，由浏览器定义，并且在每个请求中自动发送。
+3.空行
+请求头后面必须有一个空行
+4.请求数据
+请求的数据也叫请求体，可以添加任意的其它数据。这个例子的请求体为空。
+Response
+一般情况下，服务器收到客户端的请求后，就会有一个HTTP的响应消息，HTTP响应也由4部分组成，分别是：状态行、响应头、空行 和 响应体。
+http响应消息格式
+抓包的数据如下：
+HTTP/1.1 200 OK
+Server: nginx
+Date: Mon, 20 Feb 2017 09:13:59 GMT
+Content-Type: text/plain;charset=UTF-8
+Vary: Accept-Encoding
+Cache-Control: no-store
+Pragrma: no-cache
+Expires: Thu, 01 Jan 1970 00:00:00 GMT
+Cache-Control: no-cache
+Content-Encoding: gzip
+Transfer-Encoding: chunked
+Proxy-Connection: Keep-alive
+{"code":200,"notice":0,"follow":0,"forward":0,"msg":0,"comment":0,"pushMsg":null,"friend":{"snsCount":0,"count":0,"celebrityCount":0},"lastPrivateMsg":null,"event":0,"newProgramCount":0,"createDJRadioCount":0,"newTheme":true}
+1.状态行
+状态行由协议版本号、状态码、状态消息组成
+2.响应头
+响应头是客户端可以使用的一些信息，如：Date（生成响应的日期）、Content-Type（MIME类型及编码格式）、Connection（默认是长连接）等等
+3.空行
+响应头和响应体之间必须有一个空行
+4.响应体
+响应正文，本例中是键值对信息
+三、状态码
+HTTP协议的状态码由3位数字组成，第一个数字定义了响应的类别，共有5中类别：
+1.1xx: 指示信息--表示请求已接收，继续处理
+2.2xx: 成功--表示请求已被成功接收、理解、接受
+3.3xx: 重定向--要完成请求必须进行更进一步的操作
+4.4xx: 客户端错误--请求有语法错误或请求无法实现
+5.5xx: 服务器端错误--服务器未能实现合法的请求
+其中，常用的状态码如下：
+200 OK                        //客户端请求成功
+400 Bad Request               //客户端请求有语法错误，不能被服务器所理解
+401 Unauthorized              //请求未经授权，这个状态代码必须和WWW-Authenticate报头域一起使用 
+403 Forbidden                 //服务器收到请求，但是拒绝提供服务
+404 Not Found                 //请求资源不存在，eg：输入了错误的URL
+500 Internal Server Error     //服务器发生不可预期的错误
+503 Server Unavailable        //服务器当前不能处理客户端的请求，一段时间后可能恢复正
+如需了解更多的状态码，请参考这个网址：HTTP状态码
+四、请求方法
+HTTP定义了多种请求方法，来满足各种需求。HTTP/1.0定义了三种请求方法：GET、POST 和 HEAD，到了HTTP/1.1，新增了五种请求方法：OPTIONS、PUT、DELETE、TRACE 和 CONNECT。各个请求方法的具体功能如下：
+GET         请求指定的页面信息，并返回实体主体。
+HEAD        类似于get请求，只不过返回的响应中没有具体的内容，用于获取报头
+POST        向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。数据被包含在请求体中。POST请求可能会导致新的资源的建立和/或已有资源的修改。
+PUT         从客户端向服务器传送的数据取代指定的文档的内容。
+DELETE      请求服务器删除指定的页面。
+CONNECT     HTTP/1.1协议中预留给能够将连接改为管道方式的代理服务器。
+OPTIONS     允许客户端查看服务器的性能。
+TRACE       回显服务器收到的请求，主要用于测试或诊断。
+实际应用过程中，GET和POST使用的比较多，下面主要介绍一下二者的区别：
+1.请求参数的区别
+GET请求会把请求的参数拼接在URL后面，以?分隔，多个参数之间用&连接；如果是英文或数字，原样发送，如果是空格或中文，则用Base64编码
+POST请求会把提交的数据放在请求体中，不会在URL中显示出来
+2.传输数据的大小
+GET: 浏览器和服务器会限制URL的长度，所以传输的数据有限，一般是2K
+POST: 由于数据不是通过URL传递，所以一般可以传输较大量的数据
+3.数据解析
+GET: 通过Request.QueryString获取变量的值
+POST: 通过Request.form获取变量的值
+4.安全性
+GET: 请求参数在URL后面，可以直接看到，尤其是登录时，如果登录界面被浏览器缓存，其他人就可以通过查看历史记录，拿到账户和密码
+POST: 请求参数在请求体里面传输，无法直接拿到，相对GET安全性较高；但是通过抓包工具，还是可以看到请求参数的
+五、工作原理
+HTTP协议采用请求/响应模式，客户端向服务器发送一个请求报文，然后服务器响应请求。下面介绍一下一次HTTP请求的过程：
+    在浏览器中输入URL，并按下回车键
+    浏览器向DNS服务器请求解析该URL中的域名对应的IP地址(如果是IP请求，则不需要该步骤)
+    解析出IP后，根据IP和端口号，和服务器建立TCP连接
+    浏览器向服务器发送请求，该请求报文作为TCP三次握手的第三个报文发送给服务器
+    服务器做出响应，把数据发送给浏览器
+    通信完成，断开TCP连接
+    浏览器解析收到的数据并显示
+六、HTTPS简介
+HTTPS是安全的HTTP通道，即在HTTP通信中加入了SSL层（当前版本是TLS1.2），通信的数据被加密了，防止被窃取，具体的通信流程如下：
+HTTPS使用的加密方式结合了对称加密和不对称加密的特点，在保证安全的情况下，又提高了传输效率。HTTP和HTTPS的区别如下：
+1.https协议需要到ca申请证书，一般免费证书很少，需要交费。
+2.http的信息是明文传输，https 则是具有安全性的ssl加密传输协议。
+3.http和https用的端口不一样，前者是80，后者是443。
+4.http的连接很简单，是无状态的；HTTPS协议是由SSL+HTTP协议构建的可进行加密传输、身份认证的网络协议，比http协义

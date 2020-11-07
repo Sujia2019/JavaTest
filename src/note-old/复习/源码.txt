@@ -1,0 +1,26 @@
+
+
+
+源码阅读：
+redis
+hadoop找一找有什么需要优化的地方
+     
+1、paxos算法
+2、ruft拜占庭
+3、zab自学   
+4、SVM算法    LSTM
+5、rocksdb自学
+    tidb ****
+6、公平树 Fair树
+
+java 不会看源码
+不会用linux打jar包也不会打开jar包执行xxxxxxx
+
+C语言 指针不理解
+java 要学会自己封装方法 用接口 然后实现类
+框架好好学
+ajax
+说话方式 提问 记住老师讲过的东西！！！！
+
+IOC 
+AOP

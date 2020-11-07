@@ -1,0 +1,8 @@
+1,23种设计模式
+2，jvm内存结构√ 垃圾回收机制√  多线程  反射机制   nio
+3，redis 五种数据结构    hadoop-yarn
+4，springMVC mybatis
+5，hadoop生态，elasticsearch
+6，TCP/UDP/HTTP协议
+7，mysql
+8，netty

@@ -1,0 +1,150 @@
+网络编程：
+一：B/S结构，浏览器端到服务器端通信依赖http协议
+交互过程：
+1：在浏览器地址栏输入http://ip:port/应用/资源路径
+2：浏览器根据ip和服务器建立连接，port确定和那个应用进行交互，因为ip主机上面有很多应用程序。
+3：浏览器端发送请求以及参数到服务器端，就是url（同一资源定位器）,确定请求资源。
+4：服务器处理请求，将处理后的结果响应发送到浏览器。
+5：浏览器得到资源后，渲染到界面，显示给用户。
+优点：B/S交互可以省去客户端部署升级的风险，降低了成本，只需要关注服务器开发。
+二：C/S结构，客户端到服务器端通信也是依赖HTTP协议
+主要是java应用程序与服务器的交互，交互过程：
+1：根据请求url创建URL对象
+2：创建连接对象URLConnection，设置连接参数，建立连接。
+3：发送请求到服务器，服务器进行处理
+4：服务器发送响应到客户端。 
+三：get请求与post请求的异同点
+1：get请求会将请求参数显示在请求地址的后面，post不会，所以post相较于get更安全，但是安全是相对的，如果追求安全发送请求还是要加密。
+2：get请求发送数据理论上是4kb，而post理论上可以发送任意大的数据
+3：如果是C/S结构，post请求在建立连接前，要设置DoInput和DoOutput的值
+四：java程序请求服务器实例
+get请求案例：
+ 1 /**
+ 2      * 发送get请求，参数放在url后面
+ 3      */
+ 4     public static String sendGetRequest(String url, String params) {
+ 5         StringBuilder result = new StringBuilder();
+ 6         String realUrl = url + "?" + params;
+ 7         InputStream in = null;
+ 8         BufferedReader br = null;
+ 9         try {
+10             // 与服务器建立连接
+11             URL u = new URL(realUrl);
+12             URLConnection conn = u.openConnection();
+13             conn.setRequestProperty("accept", "*/*");
+14             conn.setRequestProperty("connection", "keep-alive");
+15             conn.connect();
+16 
+17             // 获取响应头
+18             Map<String, List<String>> map = conn.getHeaderFields();
+19             Set<String> set = map.keySet();
+20             Iterator<String> it = set.iterator();
+21             while (it.hasNext()) {
+22                 String key = it.next();
+23                 System.out.println(key + ":::" + map.get(key));
+24             }
+25 
+26             // 获取响应数据
+27             in = conn.getInputStream();
+28             br = new BufferedReader(new InputStreamReader(in, "utf-8"));
+29             String line;
+30             while ((line = br.readLine()) != null) {
+31                 result.append(line);
+32             }
+33         } catch (Exception e) {
+34             e.printStackTrace();
+35         } finally {
+36             if (null != in) {
+37                 try {
+38                     in.close();
+39                 } catch (IOException e) {
+40                     e.printStackTrace();
+41                 }
+42             }
+43             if (null != br) {
+44                 try {
+45                     br.close();
+46                 } catch (IOException e) {
+47                     e.printStackTrace();
+48                 }
+49             }
+50         }
+51         return result.toString();
+52     }
+
+post请求案例：
+ 1     /**
+ 2      * 发送post请求，参数单独发送到服务器端
+ 3      */
+ 4     public static String sendPostRequest(String url, String params) {
+ 5         StringBuilder result = new StringBuilder();
+ 6         String realUrl = url;
+ 7         InputStream in = null;
+ 8         BufferedReader br = null;
+ 9         try {
+10             // 与服务器建立连接
+11             URL u = new URL(realUrl);
+12             URLConnection conn = u.openConnection();
+13             conn.setRequestProperty("accept", "*/*");
+14             conn.setRequestProperty("connection", "keep-alive");
+15 
+16             // post请求必须设置请求头
+17             conn.setDoInput(true);
+18             conn.setDoOutput(true);
+19             conn.connect();
+20 
+21             // 发送参数到服务器
+22             OutputStream out = conn.getOutputStream();
+23             PrintWriter pw = new PrintWriter(new OutputStreamWriter(out,
+24                     "utf-8"));
+25             pw.print(params);
+26             pw.flush();
+27             pw.close();
+28 
+29             // 获取响应头
+30             Map<String, List<String>> map = conn.getHeaderFields();
+31             Set<Entry<String, List<String>>> entry = map.entrySet();
+32             Iterator<Entry<String, List<String>>> it = entry.iterator();
+33             while (it.hasNext()) {
+34                 Entry<String, List<String>> en = it.next();
+35                 System.out.println(en.getKey() + ":::" + en.getValue());
+36             }
+37 
+38             // 获取响应数据
+39             in = conn.getInputStream();
+40             br = new BufferedReader(new InputStreamReader(in, "utf-8"));
+41             String line;
+42             while ((line = br.readLine()) != null) {
+43                 result.append(line);
+44             }
+45         } catch (Exception e) {
+46             e.printStackTrace();
+47         } finally {
+48             if (null != in) {
+49                 try {
+50                     in.close();
+51                 } catch (IOException e) {
+52                     e.printStackTrace();
+53                 }
+54             }
+55             if (null != br) {
+56                 try {
+57                     br.close();
+58                 } catch (IOException e) {
+59                     e.printStackTrace();
+60                 }
+61             }
+62         }
+63         return result.toString();
+64     }
+
+测试案例：
+1 // 测试发送请求
+2     public static void main(String[] args) {
+3         String url = "http://localhost:8080/healthcare/dataAnalysis/search.do";
+4         String params = "tname=employee";
+5         // 测试get请求
+6         System.out.println(SendGetAndPost.sendGetRequest(url, params));
+7         // 测试post请求
+8         System.out.println(SendGetAndPost.sendPostRequest(url, params));
+9     }

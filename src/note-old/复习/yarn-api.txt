@@ -1,0 +1,131 @@
+
+Resource类：
+
+先看开头的注释，注释写的很清楚，翻译过来很好理解
+ * <p><code>Resource</code> models a set of computer resources in the 
+ * cluster.</p>
+ * 
+ * <p>Currently it models both <em>memory</em> and <em>CPU</em>.</p>
+ * 
+ * <p>The unit for memory is megabytes(兆字节). CPU is modeled with virtual cores(核心)
+ * (vcores), a unit for expressing parallelism(类似). A node's capacity should
+ * be configured with virtual cores equal to its number of physical cores. A
+ * container should be requested with the number of cores it can saturate(饱和), i.e.
+ * the average number of threads it expects to have runnable at a time.</p>
+ * 
+ * <p>Virtual cores take integer values and thus currently CPU-scheduling is
+ * very coarse(粗糙的).  A complementary(互补的) axis(轴心) for CPU requests that represents(表现)
+ * processing power will likely be added in the future to enable finer-grained
+ * resource configuration.</p>
+ *
+ * <p>Typically, applications request <code>Resource</code> of suitable
+ * capability to run their component(成分) tasks.</p>
+
+也就是说，yarn不是真正去 跟cpu进行资源请求，而是创建一个虚拟的表模拟cpu，可定义它的大小为cpu大小，请求资源时，直接用这个数减去所需资源即模拟了cpu剩余资源。这就是对资源的大致定义了
+
+
+
+一、要想明白Resource是如何设计的，先看如何创建实例 new Instance()
+
+  public static Resource newInstance(long memory, int vCores) {
+    return new LightWeightResource(memory, vCores);
+  }
+
+  public static Resource newInstance(long memory, int vCores,
+      Map<String, Long> others) {
+    if (others != null) {
+      return new LightWeightResource(memory, vCores,
+          ResourceUtils.createResourceTypesArray(others));
+
+    } else {
+        //在没有映射表的时候会走默认的实例化
+      return newInstance(memory, vCores);
+    }
+  }
+   * @param memory the memory value
+   * @param vCores the CPU value
+   * @param others a map of other resource values indexed by resource name
+   * @return a {@link Resource} instance with the given resource values
+
+一共有3种创建实例的方式，第一种我想应该是单机模式，因为没有传参数others
+
+还有一种
+  public static Resource newInstance(Resource resource) {
+    Resource ret;
+    int numberOfKnownResourceTypes = ResourceUtils
+        .getNumberOfKnownResourceTypes();
+    if (numberOfKnownResourceTypes > 2) {
+      ret = new LightWeightResource(resource.getMemorySize(),
+          resource.getVirtualCores(), resource.getResources());
+    } else {
+      ret = new LightWeightResource(resource.getMemorySize(),
+          resource.getVirtualCores());
+    }
+    return ret;
+  }
+
+显而易见，这都与另一个类LightWeightResource有关，类似handler。进入LightWeightResource，可以看到这两种生成方式。首先还是注释：
+ * <code>LightWeightResource</code> extends Resource to handle base resources such
+ * as memory and CPU.
+ * TODO: We have a long term plan to use AbstractResource when additional
+ * resource types are to be handled as well.
+ * This will be used to speed up internal calculation to avoid creating
+ * costly PB-backed Resource object: <code>ResourcePBImpl</code>
+
+    继承了Resource类to handle base resources such as memory and CPU.
+
+  public LightWeightResource(long memory, int vcores,
+      ResourceInformation[] source) {
+    int numberOfKnownResourceTypes = ResourceUtils
+        .getNumberOfKnownResourceTypes();
+    initResourceInformations(memory, vcores, numberOfKnownResourceTypes);
+
+    for (int i = 2; i < numberOfKnownResourceTypes; i++) {
+      resources[i] = new ResourceInformation();
+      ResourceInformation.copy(source[i], resources[i]);
+    }
+  }
+  此构造器对应第二个创建实例的方法中      
+    return new LightWeightResource(memory, vCores,
+          ResourceUtils.createResourceTypesArray(others));
+
+    那么ResourceUtils肯定是去找配置文件的信息了。点进方法第一句就是：
+    initializeResourceTypesIfNeeded();
+
+    跟代码：
+  private static void initializeResourceTypesIfNeeded() {
+    initializeResourceTypesIfNeeded(null,
+        YarnConfiguration.RESOURCE_TYPES_CONFIGURATION_FILE);
+  }
+此时出现YarnConfiguration
+     获取配置文件
+
+//////////////////////////////
+
+头一次这么认真看源码，在api中，定义了很完善的接口和抽象类，
+因为是分布式，在保持通信上 肯定要有request和response 所以 基本上都会成对出现
+
+首先api包中protocolrecords 就定义了一些抽象类
+
+分配请求，
+程序请求，
+资源升级请求，
+app程序尝试 汇报 
+获得集群信息，
+获得节点状态，
+获得container信息
+申请新的app
+队列
+kill app
+应用程序转移
+应用程序注册
+回滚
+container的启动和停止
+app更新优先级
+app提交
+
+通过抽象类名的描述大致也能猜出yarn是如何运作的
+
+
+
+
