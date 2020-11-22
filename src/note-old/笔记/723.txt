@@ -1,4 +1,3 @@
-package note
 json jquery vue
 
         var i={

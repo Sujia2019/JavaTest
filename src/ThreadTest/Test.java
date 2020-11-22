@@ -1,7 +1,10 @@
 package ThreadTest;
 
 
+import java.nio.channels.Channel;
+import java.util.HashMap;
 import java.util.concurrent.*;
+import java.util.concurrent.locks.AbstractQueuedSynchronizer;
 
 public class Test {
     public static volatile boolean flag = true;
@@ -9,7 +12,9 @@ public class Test {
 //        AtomicIntegerArray atest = new AtomicIntegerArray(10);
 //        atest.set(1,10);
 //        System.out.println(atest.toString());
-
+        ConcurrentHashMap<String, String> map = new ConcurrentHashMap<>();
+        HashMap<Integer, Integer> hash = new HashMap<>();
+        map.put("123", "456");
         Task t1 = new Task();
         Task2 t2 = new Task2();
 //        ExecutorService pool = Executors.newSingleThreadExecutor();
@@ -24,6 +29,8 @@ public class Test {
 
         Task3 t3 = new Task3();
         service.scheduleWithFixedDelay(t3,2,2,TimeUnit.SECONDS);
+//        Channel
+//        AbstractQueuedSynchronizer
 
 
     }
