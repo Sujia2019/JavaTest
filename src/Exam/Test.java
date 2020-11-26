@@ -94,23 +94,28 @@ public class Test {
 //        builder.insert(3,"-");
 //        builder.insert(8,"-");
 //        System.out.println(builder.toString());
-        String content = "18539";
-        String regexTel = "^((\\+?86)|(\\(\\+86\\)))?(13[0123456789][0-9]{8}|15[0123456789][0-9]{8}|18[0123456789][0-9]{8}|14[57][0-9]{8}|1349[0-9]{7}|17[01678][0-9]{8})$";
-        String regex = "^(0\\d{2,3}-?\\d{7,8})$";
-        Pattern p1 = Pattern.compile(regexTel);
-        Pattern p2 = Pattern.compile(regex);
-        Matcher matcher1 = p1.matcher(content);
-        Matcher matcher2 = p2.matcher(content);
-        if (matcher1.matches()) {
-            System.out.println("匹配");
-        }
-        if (matcher2.matches()) {
-            System.out.println("匹配");
-        }
-        if (matcher1.matches() || matcher2.matches()) {
-            System.out.println("匹配");
-        } else {
-            System.out.println("不匹配");
-        }
+//        String content = "18539";
+//        String regexTel = "^((\\+?86)|(\\(\\+86\\)))?(13[0123456789][0-9]{8}|15[0123456789][0-9]{8}|18[0123456789][0-9]{8}|14[57][0-9]{8}|1349[0-9]{7}|17[01678][0-9]{8})$";
+//        String regex = "^(0\\d{2,3}-?\\d{7,8})$";
+//        Pattern p1 = Pattern.compile(regexTel);
+//        Pattern p2 = Pattern.compile(regex);
+//        Matcher matcher1 = p1.matcher(content);
+//        Matcher matcher2 = p2.matcher(content);
+//        if (matcher1.matches()) {
+//            System.out.println("匹配");
+//        }
+//        if (matcher2.matches()) {
+//            System.out.println("匹配");
+//        }
+//        if (matcher1.matches() || matcher2.matches()) {
+//            System.out.println("匹配");
+//        } else {
+//            System.out.println("不匹配");
+//        }
+        String reg = "^[0-9]*$";
+        Pattern p = Pattern.compile(reg);
+        Matcher macher = p.matcher("2314124124");
+        System.out.println(macher.matches());
+
     }
 }
