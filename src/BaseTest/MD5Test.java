@@ -15,8 +15,8 @@ import java.util.Base64;
 public class MD5Test {
     public static void main(String[] args) {
         DigestUtils.md5Digest("osc-admin".getBytes());
-        String base64Private = new BASE64Encoder().encode("osc-admin".getBytes());
+        String base64Private = new BASE64Encoder().encode("800P_xuhd".getBytes());
         System.out.println(base64Private);
-        System.out.println(DigestUtils.md5DigestAsHex(new BASE64Encoder().encode("osc-admin".getBytes()).getBytes()));
+//        System.out.println(DigestUtils.md5DigestAsHex(new BASE64Encoder().encode("osc-admin".getBytes()).getBytes()));
     }
 }
