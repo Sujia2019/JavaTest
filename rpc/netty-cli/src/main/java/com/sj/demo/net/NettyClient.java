@@ -7,7 +7,6 @@ import com.sj.demo.param.RpcRequest;
 import com.sj.demo.param.RpcResponse;
 import com.sj.demo.serialize.Serializer;
 import com.sj.demo.util.IpUtil;
-import com.sj.demo.util.RpcException;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;

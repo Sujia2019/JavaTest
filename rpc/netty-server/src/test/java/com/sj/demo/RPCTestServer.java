@@ -19,6 +19,6 @@ public class RPCTestServer {
 //        while(!Thread.currentThread().isInterrupted()){
 //            TimeUnit.HOURS.sleep(1);
 //        }
-        factory.stop();
+//        factory.stop();
     }
 }
