@@ -7,3 +7,14 @@ lib
 .idea
 
 将删除 test/target/
+bigData/target/
+kafka/target/
+netty/target/
+rpc/api/target/
+rpc/core/target/
+rpc/netty-cli/target/
+rpc/netty-server/target/
+rpc/target/
+target/
+test-spring/target/
+test/target/
