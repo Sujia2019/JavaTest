@@ -1,5 +1,8 @@
 package BaseTest;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  * @author ：sujia
  * @date ：Created in 2020/12/15 8:26 下午
@@ -9,7 +12,15 @@ package BaseTest;
  */
 public class BasalTest {
     public static void main(String[] args) {
-        System.out.println(tryCatchTest("1"));
+        int i=1;
+        System.out.println(++i);
+        System.out.println(i);
+//        short a =1;
+        String a = "a"+2;
+//        Arrays.copyOfRange()
+        a = "b";
+//        ArrayList
+        System.out.println(a);
     }
 
 
@@ -29,4 +40,6 @@ public class BasalTest {
             System.out.println("hello");
         }
     }
+
+
 }
