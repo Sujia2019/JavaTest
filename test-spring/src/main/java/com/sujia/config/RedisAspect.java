@@ -31,7 +31,7 @@ public class RedisAspect {
         search redis
          */
         System.out.println("add----before");
-//        Signature signature = joinPoint.getSignature();
+//        Signature signature = joinPopublic int val;int.getSignature();
 //        //获得方法签名
 //        MethodSignature methodSignature = (MethodSignature)signature;
 //        //获得参数名
